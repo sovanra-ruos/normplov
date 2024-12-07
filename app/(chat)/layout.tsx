@@ -27,7 +27,7 @@ export default function ChatLayout({
 }>) {
   return (
     <html lang="en">
-      <body>
+      <body className={`${suwannaphum.className} ${inter} antialiased`}>
         <SidebarProvider>
           <AppSidebar />
           <main className="w-full h-screen overflow-hidden">

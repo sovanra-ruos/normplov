@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import type { RootState } from "@/src/redux/store";
+import type { RootState } from "@//redux/store";
 type initialStateType ={
     token: string | null;  // assuming token is string for simplicity
 }
