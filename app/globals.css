@@ -3,8 +3,6 @@
 @tailwind utilities;
 body{
   font-family: Suwannaphum, Inter, sans-serif;
-
-  
 }
 
 .Toastify__toast-icon {

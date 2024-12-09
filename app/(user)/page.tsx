@@ -15,7 +15,6 @@ interface FeatureCardProps {
 }
 
 export default function page() {
-    
   return (
     <div className="w-full h-auto bg-white ">
       {/* Hero Section */}
@@ -64,9 +63,7 @@ export default function page() {
             <FeatureCard
               image="/assets/feature-01.png"
               title="សិស្សវិទ្យាល័យ"
-              description="សិស្សវិទ្យាល័យអាចស្វែងយល់ពីចំណង់
-ចំណូលចិត្តរបស់ខ្លួននិងមុខវិជ្ជាដែលខ្លួន
-ចូលចិត្ត"
+              description="សិស្សវិទ្យាល័យអាចស្វែងយល់ពីចំណង់ចំណូលចិត្តរបស់ខ្លួននិងមុខវិជ្ជាដែលខ្លួនចូលចិត្ត"
             />
 
             {/* Feature 2: Undergraduate */}
@@ -127,15 +124,13 @@ export default function page() {
             className="text-xl  lg:flex md:hidden hidden justify-center items-center font-bold text-center mb-2 text-textprimary"
           >
             <div className="flex">
-              <div className="text-primary w-32  ">
-                ព័ត៌មានបន្ថែម
-              </div>
+              <div className="text-primary w-32  ">ព័ត៌មានបន្ថែម</div>
               <BiRightArrowAlt className="text-3xl  text-primary" />
             </div>
           </Link>
         </div>
         <div className="max-w-7xl mx-auto my-4 md:my-6">
-        <CardUniversity limit={4} />
+          <CardUniversity limit={4} />
           <Link
             href="/"
             className="text-xl  lg:hidden md:flex hidden justify-end mt-6 items-center font-bold text-center text-textprimary"
@@ -165,7 +160,13 @@ function FeatureCard({ image, title, description }: FeatureCardProps) {
     <div className="flex flex-col items-center text-center p-4 rounded-lg ">
       {/* Fixed-size Image Container */}
       <div className="w-[180px] h-[180px] md:w-[200px] md:h-[200px] lg:w-[300px] lg:h-[300px]  mb-2">
-        <Image src={image} alt={title} width={200} height={200} className="object-contain w-full h-full" />
+        <Image
+          src={image}
+          alt={title}
+          width={200}
+          height={200}
+          className="object-contain w-full h-full"
+        />
       </div>
       {/* Content */}
       <div className="lg:p-4 md:p-0 p-2 rounded-lg lg:w-90 md:w-78 w-90">
