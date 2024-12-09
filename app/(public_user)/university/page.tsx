@@ -58,7 +58,7 @@ export default function Page() {
             ស្វែងរកគ្រឹះស្ថានសិក្សាទៅកម្ពុជា
           </h1>
 
-          <div className="max-w-4xl mx-auto space-y-4">
+          <div className=" mx-auto max-w-4xl space-y-4">
             {/* Search input */}
             <div className="flex">
               <input
