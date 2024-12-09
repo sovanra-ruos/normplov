@@ -16,10 +16,19 @@ type BaseQueryOptions = Record<string, unknown>; // Object with unknown properti
 const baseQuery = fetchBaseQuery({
   baseUrl: process.env.NEXT_PUBLIC_NORMPLOV_API_URL,
   prepareHeaders: (headers, { getState }) => {
-    const token = (getState() as RootState).auth.token;
+    // const token = (getState() as RootState).auth.token;
+    
+    // if (token) {
+    //   headers.set("authorization", `Bearer ${token}`);
+    // }
+
+    const token =
+      (getState() as RootState).auth.token || process.env.NEXT_PUBLIC_TEST_TOKEN;
+
     if (token) {
-      headers.set("authorization", `Bearer ${token}`);
+      headers.set("Authorization", `Bearer ${token}`);
     }
+
     return headers;
   },
 });

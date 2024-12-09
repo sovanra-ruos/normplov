@@ -8,12 +8,12 @@ import { QuizResultIntroContainer } from '../QuizResultIntroContainer';
 
 
 // Import JSON data
-import personalityJson from '@//app/(user)/json/personalityKh.json';
-import skillJson from '@//app/(user)/json/skillKh.json';
-import interestJson from '@//app/(user)/json/interestKh.json';
-import valueJson from '@//app/(user)/json/valueKh.json';
-import learningStyleJson from '@//app/(user)/json/learningStyleKh.json';
-import allTestJson from '@//app/(user)/json/allTest.json';
+import personalityJson from '@/app/(user)/json/personalityKh.json';
+import skillJson from '@/app/(user)/json/skillKh.json';
+import interestJson from '@/app/(user)/json/interestKh.json';
+import valueJson from '@/app/(user)/json/valueKh.json';
+import learningStyleJson from '@/app/(user)/json/learningStyleKh.json';
+import allTestJson from '@/app/(user)/json/allTest.json';
 import { QuizLinkAndChatContainer } from '../QuizLinkAndChatContainer';
 import { Feedback } from '../../General/Feedback';
 import { RecommendationCard } from '../RecommendationCard';

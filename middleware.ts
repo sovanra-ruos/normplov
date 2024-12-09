@@ -2,7 +2,6 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
 export function middleware(request: NextRequest) {
-    console.log("Middleware triggered:", request.url);
 
     // Example: Check for a token in cookies
     //   const token = request.cookies.get("authjs.session-token");
@@ -15,18 +14,29 @@ export function middleware(request: NextRequest) {
     //   // Allow the request if the token exists
     //   return NextResponse.next();
 
-    const refreshToken = request.cookies.get("normplov-refresh-token");
+    // If the request is for a sub-path under '/test' (e.g., '/test/anything'), redirect to '/test'
 
-    if (!refreshToken) {
+    console.log("Middleware triggered:", request.url);
+
+    const refreshToken = request.cookies.get("normplov-refresh-token");
+    const url = request.nextUrl.pathname;
+
+    if (url.startsWith("/test/")) {
+        console.log("Blocked sub-path under '/test', redirecting to '/test'...");
+        return NextResponse.redirect(new URL("/test", request.url));
+    }
+
+    // If the request is for '/test' and no refresh token, redirect to login
+    if (url === "/test/" && !refreshToken) {
         console.log("No refresh token found, redirecting to login...");
         return NextResponse.redirect(new URL("/login", request.url));
     }
 
-    console.log("Refresh token found, allowing request...");
+    // Allow the request to proceed
     return NextResponse.next();
 }
 
-// Optional: Add matchers to specify which routes the middleware applies to
+
 export const config = {
-    matcher: ["/test"], // Example routes
+    matcher: "/test", 
 };

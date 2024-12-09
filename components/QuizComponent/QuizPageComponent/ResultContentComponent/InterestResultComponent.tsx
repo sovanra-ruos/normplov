@@ -7,7 +7,7 @@ import creativityImage from '@/public/Quiz/interest/creativity.png'
 import enterprising from '@/public/Quiz/interest/enterprising.png'
 
 // Import json
-import interestJson from '@//app/(user)/json/interestKh.json'
+import interestJson from '@/app/(user)/json/interestKh.json'
 import { StaticImageData } from 'next/image'
 
 export const InterestResultComponent = () => {

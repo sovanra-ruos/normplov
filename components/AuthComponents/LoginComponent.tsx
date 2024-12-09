@@ -10,8 +10,8 @@ import ErrorDynamic from "./ErrorComponent";
 import PasswordField from './PasswordField';
 import Link from 'next/link';
 import Button from './ButtonComponentForAuth'; 
-import { useAppDispatch,useAppSelector } from '@//redux/hooks';
-import { selectToken,setAccessToken} from '@//redux/feature/auth/authSlice';
+import { useAppDispatch,useAppSelector } from '@/redux/hooks';
+import { selectToken,setAccessToken} from '@/redux/feature/auth/authSlice';
 import 'react-toastify/dist/ReactToastify.css';
 import {ToastContainer, toast } from 'react-toastify';
 import Image from 'next/image'

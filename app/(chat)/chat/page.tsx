@@ -1,8 +1,8 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { DynamicChatComponent } from '@//components/ui/chat/DynamicChatComponent';
-import { AppSidebar } from '@//components/ui/app-sidebar';
+import { DynamicChatComponent } from '@/components/ui/chat/DynamicChatComponent';
+import { AppSidebar } from '@/components/ui/app-sidebar';
 
 type Message = {
   id: number;

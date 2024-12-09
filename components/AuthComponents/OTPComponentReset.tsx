@@ -1,17 +1,17 @@
 'use client';
 import React, { useState, useEffect } from "react";
-import OTPValidation from "@//components/AuthComponents/OTPValidation";
+import OTPValidation from "@/components/AuthComponents/OTPValidation";
 import { IoCloseSharp } from "react-icons/io5";
 import Button from "./ButtonComponentForAuth";
-import { useAppDispatch,useAppSelector } from '@//redux/hooks';
+import { useAppDispatch,useAppSelector } from '@/redux/hooks';
 import { useRouter } from "next/navigation";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Image from 'next/image'
 import Link from 'next/link';
-import { useVerifyCodeResetPasswordMutation } from "@//redux/service/auth";
-import { useResendCodeResetPasswordMutation } from "@//redux/service/auth";
-import { setResetCode } from "@//redux/feature/verify/verifySlice";
+import { useVerifyCodeResetPasswordMutation } from "@/redux/service/auth";
+import { useResendCodeResetPasswordMutation } from "@/redux/service/auth";
+import { setResetCode } from "@/redux/feature/verify/verifySlice";
 
 function OTPComponentReset() {
   const email = useAppSelector((state) => state.verify.email);

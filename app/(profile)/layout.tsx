@@ -1,8 +1,8 @@
-import "@//app/globals.css";
+import "@/app/globals.css";
 import type { Metadata } from "next";
 import "../globals.css";
 import { Inter, Suwannaphum } from "next/font/google";
-import SideBarProfileComponent from "@//components/ProfileComponent/SideBarProfileComponent";
+import SideBarProfileComponent from "@/components/ProfileComponent/SideBarProfileComponent";
 const suwannaphum = Suwannaphum({
   subsets: ["khmer"],
   weight: ["400", "700"],

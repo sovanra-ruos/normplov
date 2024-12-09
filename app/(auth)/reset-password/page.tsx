@@ -1,5 +1,5 @@
 import React from "react";
-import ResetPasswordComponent from "@//components/AuthComponents/ResetPasswordComponent";
+import ResetPasswordComponent from "@/components/AuthComponents/ResetPasswordComponent";
 export default function page() {
   return (
     // <section className="w-full h-screen flex items-center justify-center m-0">

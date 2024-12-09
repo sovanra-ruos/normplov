@@ -8,7 +8,7 @@ import {
   SidebarHeader,
   SidebarMenu,
   SidebarMenuItem,
-} from "@//components/ui/sidebar";
+} from "@/components/ui/sidebar";
 import { Button } from "./button";
 import Image from "next/image";
 

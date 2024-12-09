@@ -1,5 +1,5 @@
 import React from "react";
-import TestList from "@//components/ProfileComponent/TestCardList";
+import TestList from "@/components/ProfileComponent/TestCardList";
 
 export default function page() {
   return (

@@ -7,11 +7,11 @@ import Label from './LabelComponent';
 import ErrorDynamic from './ErrorComponent';
 import PasswordField from './PasswordField';
 import Button from './ButtonComponentForAuth'; // Adjust the import path as needed
-import { useResetPasswordMutation } from '@//redux/service/auth';
+import { useResetPasswordMutation } from '@/redux/service/auth';
 import { useRouter } from "next/navigation";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import {useAppSelector } from '@//redux/hooks';
+import {useAppSelector } from '@/redux/hooks';
 
 type ValueTypes = {
     new_password: string;

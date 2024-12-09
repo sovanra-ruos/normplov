@@ -12,7 +12,7 @@ import promo from '@/public/Quiz/learningStyle/promodoro.png'
 
 
 
-import learningStyleJson from '@//app/(user)/json/learningStyleKh.json'
+import learningStyleJson from '@/app/(user)/json/learningStyleKh.json'
 
 
 export const LearningStyleResultComponent = () => {
