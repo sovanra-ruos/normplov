@@ -110,6 +110,7 @@ export async function POST(req: NextRequest) {
     // Parse the successful response
     const data = await response.json();
     const { access_token, refresh_token, ...user } = data.payload;
+    console.log("Access token login api: " + access_token)
 
     if (!access_token || !refresh_token) {
       return NextResponse.json(
@@ -126,8 +127,7 @@ export async function POST(req: NextRequest) {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",
       path: "/",
-      sameSite: "lax",
-      expires: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000), // Example: 7 days expiration
+      sameSite: "lax"
     });
 
     // Send the access token and user data in the response, with the refresh token as a cookie
