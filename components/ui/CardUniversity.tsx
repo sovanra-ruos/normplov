@@ -10,7 +10,7 @@ export default function CardUniversity({ limit = 8 }: { limit?: number }) {
       address: "សង្កាត់ទឹកល្អក់១ ខណ្ឌទួលគោក",
       major : "ព័ត៌មានវិទ្យា",
       logo: "/assets/itc.png",
-      link: "#",
+      link: "/university-detail",
     },
     {
       name: "សាកលវិទ្យាល័យ ភូមិន្ទភ្នំពេញ",
