@@ -63,22 +63,24 @@ export default function page() {
             {/* Feature 1: Student */}
             <FeatureCard
               image="/assets/feature-01.png"
-              title="សិស្សនិស្សិត"
-              description="សិស្សនិស្សិតអាចស្វែងរកលើកិច្ចការ ចំណាប់អារម្មណ៍ខ្លួននិងជំនាញដែលខ្លួនចង់ធ្វើបន្តទៅ"
+              title="សិស្សវិទ្យាល័យ"
+              description="សិស្សវិទ្យាល័យអាចស្វែងយល់ពីចំណង់
+ចំណូលចិត្តរបស់ខ្លួននិងមុខវិជ្ជាដែលខ្លួន
+ចូលចិត្ត"
             />
 
             {/* Feature 2: Undergraduate */}
             <FeatureCard
               image="/assets/feature-02.png"
-              title="សិស្សសកលនិស្សិត"
-              description="សិស្សសកលនិស្សិតអាចរៀបចំ ស្វែងរកកំណត់ត្រូវដើម្បីនិស្សិតខ្លួន"
+              title="សិស្សសកលវិទ្យាល័យ"
+              description="សិស្សសកលវិទ្យាល័យដែលមានអារម្មណ៍ថាកំពុងជ្រើសរើសជំនាញខុស"
             />
 
             {/* Feature 3: Business Professional */}
             <FeatureCard
               image="/assets/feature-03.png"
               title="បុគ្គលិកកំពុងធ្វើការងារ"
-              description="បុគ្គលិកដែលចង់មានបទពិសោធន៍ផ្នែកផ្សេងៗ និងដែលចង់ត្រូវនឹងជំនាញដែលខ្លួនកំពុងធ្វើ"
+              description="បុគ្គលិកដែលមានបំណងចង់ផ្លាស់ប្តូរការងារ ដែលមិនច្បាស់នឹងជំនាញដែលខ្លួនកំពុងធ្វើ"
             />
           </div>
         </div>

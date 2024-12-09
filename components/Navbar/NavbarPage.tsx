@@ -6,12 +6,12 @@ import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 
 const navLinks = [
-  { href: "/", label: "Home" },
-  { href: "/test", label: "Test" },
-  { href: "/university", label: "University" },
-  { href: "/jobs", label: "Jobs" },
-  { href: "/policy", label: "Policy" },
-  { href: "/about-us", label: "About us" },
+  { href: "/", label: "ទំព័រដើម" },
+  { href: "/test", label: "តេស្ត" },
+  { href: "/university", label: "គ្រឹស្ថានសិក្សា" },
+  { href: "/jobs", label: "ការងារ" },
+  { href: "/privacy-policy", label: "ឯកជនភាព" },
+  { href: "/about-us", label: "អំពីយើង" },
 ];
 
 export default function NavbarPage() {
