@@ -45,7 +45,6 @@ export const JobDetailCard = ({ jobTitle, jobCompany, image, time, location, cat
                         className="object-cover"
                         onError={() => setImgSrc(placeholderImage)}
                     />
-
                     <div className='block md:hidden'>
                         <QuizButton title={buttonText ? buttonText : 'ដាក់ពាក្យ'} rounded='xl' type='rightIcon' />
                     </div>
