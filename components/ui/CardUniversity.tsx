@@ -1,10 +1,19 @@
 import { BiRightArrowAlt } from "react-icons/bi";
 import Image from "next/image";
+import { MapPin } from "lucide-react";
 
 export default function CardUniversity({ limit = 8 }: { limit?: number }) {
   const universities = [
     {
-      name: "សកសវិទ្យាល័យ ភូមិន្ទភ្នំពេញ",
+      name: "សាកលវិទ្យាល័យ ភូមិន្ទភ្នំពេញ",
+      englishName: "Royal University of Phnom Penh",
+      address: "សង្កាត់ទឹកល្អក់១ ខណ្ឌទួលគោក",
+      major : "ព័ត៌មានវិទ្យា",
+      logo: "/assets/itc.png",
+      link: "/university-detail",
+    },
+    {
+      name: "សាកលវិទ្យាល័យ ភូមិន្ទភ្នំពេញ",
       englishName: "Royal University of Phnom Penh",
       address: "សង្កាត់ទឹកល្អក់១ ខណ្ឌទួលគោក",
       major : "ព័ត៌មានវិទ្យា",
@@ -12,15 +21,7 @@ export default function CardUniversity({ limit = 8 }: { limit?: number }) {
       link: "#",
     },
     {
-      name: "សកសវិទ្យាល័យ ភូមិន្ទភ្នំពេញ",
-      englishName: "Royal University of Phnom Penh",
-      address: "សង្កាត់ទឹកល្អក់១ ខណ្ឌទួលគោក",
-      major : "ព័ត៌មានវិទ្យា",
-      logo: "/assets/itc.png",
-      link: "#",
-    },
-    {
-        name: "សកសវិទ្យាល័យ ភូមិន្ទភ្នំពេញ",
+        name: "សាកលវិទ្យាល័យ ភូមិន្ទភ្នំពេញ",
         englishName: "Royal University of Phnom Penh",
         address: "សង្កាត់ទឹកល្អក់១ ខណ្ឌទួលគោក",
         major : "ព័ត៌មានវិទ្យា",
@@ -28,7 +29,7 @@ export default function CardUniversity({ limit = 8 }: { limit?: number }) {
         link: "#",
       },
       {
-        name: "សកសវិទ្យាល័យ ភូមិន្ទភ្នំពេញ",
+        name: "សាកលវិទ្យាល័យ ភូមិន្ទភ្នំពេញ",
         englishName: "Royal University of Phnom Penh",
         address: "សង្កាត់ទឹកល្អក់១ ខណ្ឌទួលគោក",
         major : "ព័ត៌មានវិទ្យា",
@@ -36,7 +37,7 @@ export default function CardUniversity({ limit = 8 }: { limit?: number }) {
         link: "#",
       },
       {
-        name: "សកសវិទ្យាល័យ ភូមិន្ទភ្នំពេញ",
+        name: "សាកលវិទ្យាល័យ ភូមិន្ទភ្នំពេញ",
         englishName: "Royal University of Phnom Penh",
         address: "សង្កាត់ទឹកល្អក់១ ខណ្ឌទួលគោក",
         major : "ព័ត៌មានវិទ្យា",
@@ -44,7 +45,7 @@ export default function CardUniversity({ limit = 8 }: { limit?: number }) {
         link: "#",
       },
       {
-        name: "សកសវិទ្យាល័យ ភូមិន្ទភ្នំពេញ",
+        name: "សាកលវិទ្យាល័យ ភូមិន្ទភ្នំពេញ",
         englishName: "Royal University of Phnom Penh",
         address: "សង្កាត់ទឹកល្អក់១ ខណ្ឌទួលគោក",
         major : "ព័ត៌មានវិទ្យា",
@@ -52,7 +53,7 @@ export default function CardUniversity({ limit = 8 }: { limit?: number }) {
         link: "#",
       },
       {
-          name: "សកសវិទ្យាល័យ ភូមិន្ទភ្នំពេញ",
+          name: "សាកលវិទ្យាល័យ ភូមិន្ទភ្នំពេញ",
           englishName: "Royal University of Phnom Penh",
           address: "សង្កាត់ទឹកល្អក់១ ខណ្ឌទួលគោក",
           major : "ព័ត៌មានវិទ្យា",
@@ -60,7 +61,7 @@ export default function CardUniversity({ limit = 8 }: { limit?: number }) {
           link: "#",
         },
         {
-          name: "សកសវិទ្យាល័យ ភូមិន្ទភ្នំពេញ",
+          name: "សាកលវិទ្យាល័យ ភូមិន្ទភ្នំពេញ",
           englishName: "Royal University of Phnom Penh",
           address: "សង្កាត់ទឹកល្អក់១ ខណ្ឌទួលគោក",
           major : "ព័ត៌មានវិទ្យា",
@@ -94,9 +95,12 @@ export default function CardUniversity({ limit = 8 }: { limit?: number }) {
               <h2 className="lg:mb-2 md:mbb-2 mb-1 text-sm md:text-xl lg:text-xl  text-gray-600">
                 {university.englishName}
               </h2>
-              <p className="lg:mb-2 md:mbb-2 mb-1 text-sm md:text-lg lg:text-lg font-normal text-gray-600 dark:text-gray-400">
+              <div className="flex space-x-2">
+                <MapPin className="w-5 h-5 text-emerald-500 mt-1" />
+                <p className="lg:mb-2 md:mbb-2 mb-1 text-sm md:text-lg lg:text-lg font-normal text-gray-600 dark:text-gray-400">
                 {university.address}
               </p>
+              </div>
               <div className="lg:mb-2 md:mbb-2 mb-2 text-sm md:text-lg block md:hidden lg:hidden  lg:text-lg text-textprimary">
                 ជំនាញពេញនិយម ៖
                 <span className="text-sm md:text-lg lg:text-lg text-secondary">

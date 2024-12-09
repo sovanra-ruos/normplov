@@ -15,12 +15,14 @@ export default function FooterPage() {
                 Logo
               </Link>
               <p className="text-textprimary block md:hidden lg:block text-md leading-relaxed">
-                Norm Plov is a website that helps individuals better understand
-                themselves and make effective decisions in pursuing their
-                current and future careers.
+                នាំផ្លូវ គឺជាគេហទំព័រដែលជួយឲ្យអ្នក
+                ស្គាល់ខ្លួនឯងកាន់តែច្បាស់និងមាន ប្រសិទ្ធភាពក្នុងការចាប់យកអាជីពនា
+                ពេលបច្ចប្បន្ននិងអនាគត ។
               </p>
               <p className="text-textprimary hidden md:block lg:hidden text-md leading-relaxed">
-              Norm Plov is a website that helps individuals understand themselves and make informed career decisions.
+                នាំផ្លូវ គឺជាគេហទំព័រដែលជួយឲ្យអ្នក
+                ស្គាល់ខ្លួនឯងកាន់តែច្បាស់និងមាន ប្រសិទ្ធភាពក្នុងការចាប់យកអាជីពនា
+                ពេលបច្ចប្បន្ននិងអនាគត ។
               </p>
             </div>
           </div>
@@ -28,14 +30,16 @@ export default function FooterPage() {
           {/* Navigation */}
           <div className="flex justify-start md:justify-center lg:justify-center ">
             <div>
-              <h3 className="font-semibold text-2xl mb-4 text-textprimary">Content</h3>
+              <h3 className="font-semibold text-2xl mb-4 text-textprimary">
+                មាតិការ
+              </h3>
               <ul className="space-y-1">
                 <li>
                   <Link
                     href="/"
                     className="text-textprimary hover:text-emerald-500"
                   >
-                    Home
+                    ទំព័រដើម
                   </Link>
                 </li>
                 <li>
@@ -43,7 +47,7 @@ export default function FooterPage() {
                     href="/test"
                     className="text-textprimary hover:text-emerald-500"
                   >
-                    Test
+                    តេស្ត
                   </Link>
                 </li>
                 <li>
@@ -51,7 +55,7 @@ export default function FooterPage() {
                     href="/university"
                     className="text-textprimary hover:text-emerald-500"
                   >
-                    University
+                    គ្រឹស្ថានសិក្សា
                   </Link>
                 </li>
                 <li>
@@ -59,7 +63,7 @@ export default function FooterPage() {
                     href="/jobs"
                     className="text-textprimary hover:text-emerald-500"
                   >
-                    Jobs
+                    ការងារ
                   </Link>
                 </li>
                 <li>
@@ -67,7 +71,7 @@ export default function FooterPage() {
                     href="/policy"
                     className="text-textprimary hover:text-emerald-500"
                   >
-                    Policy
+                    ឯកជនភាព
                   </Link>
                 </li>
                 <li>
@@ -75,7 +79,7 @@ export default function FooterPage() {
                     href="/about-us"
                     className="text-textprimary hover:text-emerald-500"
                   >
-                    About us
+                    អំពីយើង
                   </Link>
                 </li>
               </ul>
@@ -85,27 +89,29 @@ export default function FooterPage() {
           {/* Contact Information */}
           <div className="flex justify-start md:justify-center lg:justify-center">
             <div>
-              <h3 className="font-semibold text-2xl mb-4 text-textprimary">Contact</h3>
+              <h3 className="font-semibold text-2xl mb-4 text-textprimary">
+                ព័ត៌មានទំនាក់ទំនង
+              </h3>
               <div className="space-y-4">
                 <div className="flex items-start space-x-3">
                   <Phone className="w-5 h-5 text-emerald-500 mt-1" />
                   <div>
                     <p className="text-textprimary">+855978443615</p>
-                    <p className="text-gray-500 text-sm">Support Number</p>
+                    <p className="text-gray-500 text-sm">លេខទូរស័ព្ទ</p>
                   </div>
                 </div>
                 <div className="flex items-start space-x-3">
                   <Mail className="w-5 h-5 text-emerald-500 mt-1" />
                   <div>
                     <p className="text-textprimary">normplov@gmail.com</p>
-                    <p className="text-gray-500 text-sm">Support Email</p>
+                    <p className="text-gray-500 text-sm">អ៉ីម៉ែល</p>
                   </div>
                 </div>
                 <div className="flex items-start space-x-3">
                   <MapPin className="w-5 h-5 text-emerald-500 mt-1" />
                   <div>
-                    <p className="text-textprimary">Khan Toul Kork, Phnom</p>
-                    <p className="text-textprimary">Penh. Cambodia</p>
+                    <p className="text-textprimary">សង្កាត់បឹកកក់១ ខណ្ឌទួលគោក រាជធានីភ្នំពេញ </p>
+                    <p className="text-gray-500 text-sm">អាស្រ័យដ្ឋាន</p>
                   </div>
                 </div>
               </div>
@@ -115,7 +121,9 @@ export default function FooterPage() {
           {/* Partner Logos */}
           <div className="flex justify-start md:justify-center lg:justify-center">
             <div>
-              <h3 className="font-semibold text-2xl mb-4 text-textprimary">Our Sponsor</h3>
+              <h3 className="font-semibold text-2xl mb-4 text-textprimary">
+                ឧបត្ថម្ភដោយ
+              </h3>
               <div className="lg:space-y-4 md:space-y-4 space-y-0  flex md:block lg:block  ">
                 <Image
                   src="/assets/MPTC-logo.jpg"
