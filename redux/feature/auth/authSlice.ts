@@ -11,10 +11,21 @@ const authSlice = createSlice({
     name: "auth",
     initialState,
     reducers: {
-        setAccessToken(state, action: PayloadAction<string> ) {
-            state.token = action.payload;
+        setAccessToken(state, action: PayloadAction<string>) {
+          console.log("AuthSlice Access Token Set in Redux:", action.payload); // Log token
+          state.token = action.payload;
         },
-    },
+        clearToken: (state) => {
+            state.token = null;
+          },
+      },
+      
+    // reducers: {
+    //     setAccessToken(state, action: PayloadAction<string> ) {
+    //         console.log("Access Token Set in Redux:", action.payload);
+    //         state.token = action.payload;
+    //     },
+    // },
 });
 
 export const { setAccessToken } = authSlice.actions;

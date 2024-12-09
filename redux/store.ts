@@ -29,7 +29,7 @@ export const makeStore = () => {
   return configureStore({
     reducer: {
       [normPlovApi.reducerPath]: normPlovApi.reducer,
-      auth: authSlice,
+      auth:authSlice,
       verify: verifySlice,
     },
     middleware: (getDefaultMiddleware) =>
