@@ -15,7 +15,6 @@ interface FeatureCardProps {
 }
 
 export default function page() {
-    
   return (
     <div className="w-full h-auto bg-white ">
       {/* Hero Section */}
@@ -63,22 +62,22 @@ export default function page() {
             {/* Feature 1: Student */}
             <FeatureCard
               image="/assets/feature-01.png"
-              title="សិស្សនិស្សិត"
-              description="សិស្សនិស្សិតអាចស្វែងរកលើកិច្ចការ ចំណាប់អារម្មណ៍ខ្លួននិងជំនាញដែលខ្លួនចង់ធ្វើបន្តទៅ"
+              title="សិស្សវិទ្យាល័យ"
+              description="សិស្សវិទ្យាល័យអាចស្វែងយល់ពីចំណង់ចំណូលចិត្តរបស់ខ្លួននិងមុខវិជ្ជាដែលខ្លួនចូលចិត្ត"
             />
 
             {/* Feature 2: Undergraduate */}
             <FeatureCard
               image="/assets/feature-02.png"
-              title="សិស្សសកលនិស្សិត"
-              description="សិស្សសកលនិស្សិតអាចរៀបចំ ស្វែងរកកំណត់ត្រូវដើម្បីនិស្សិតខ្លួន"
+              title="សិស្សសកលវិទ្យាល័យ"
+              description="សិស្សសកលវិទ្យាល័យដែលមានអារម្មណ៍ថាកំពុងជ្រើសរើសជំនាញខុស"
             />
 
             {/* Feature 3: Business Professional */}
             <FeatureCard
               image="/assets/feature-03.png"
               title="បុគ្គលិកកំពុងធ្វើការងារ"
-              description="បុគ្គលិកដែលចង់មានបទពិសោធន៍ផ្នែកផ្សេងៗ និងដែលចង់ត្រូវនឹងជំនាញដែលខ្លួនកំពុងធ្វើ"
+              description="បុគ្គលិកដែលមានបំណងចង់ផ្លាស់ប្តូរការងារ ដែលមិនច្បាស់នឹងជំនាញដែលខ្លួនកំពុងធ្វើ"
             />
           </div>
         </div>
@@ -125,15 +124,13 @@ export default function page() {
             className="text-xl  lg:flex md:hidden hidden justify-center items-center font-bold text-center mb-2 text-textprimary"
           >
             <div className="flex">
-              <div className="text-primary w-32  ">
-                ព័ត៌មានបន្ថែម
-              </div>
+              <div className="text-primary w-32  ">ព័ត៌មានបន្ថែម</div>
               <BiRightArrowAlt className="text-3xl  text-primary" />
             </div>
           </Link>
         </div>
         <div className="max-w-7xl mx-auto my-4 md:my-6">
-        <CardUniversity limit={4} />
+          <CardUniversity limit={4} />
           <Link
             href="/"
             className="text-xl  lg:hidden md:flex hidden justify-end mt-6 items-center font-bold text-center text-textprimary"
@@ -163,7 +160,13 @@ function FeatureCard({ image, title, description }: FeatureCardProps) {
     <div className="flex flex-col items-center text-center p-4 rounded-lg ">
       {/* Fixed-size Image Container */}
       <div className="w-[180px] h-[180px] md:w-[200px] md:h-[200px] lg:w-[300px] lg:h-[300px]  mb-2">
-        <Image src={image} alt={title} width={200} height={200} className="object-contain w-full h-full" />
+        <Image
+          src={image}
+          alt={title}
+          width={200}
+          height={200}
+          className="object-contain w-full h-full"
+        />
       </div>
       {/* Content */}
       <div className="lg:p-4 md:p-0 p-2 rounded-lg lg:w-90 md:w-78 w-90">

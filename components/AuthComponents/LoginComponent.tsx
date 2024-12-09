@@ -14,6 +14,7 @@ import { useAppDispatch,useAppSelector } from '@/redux/hooks';
 import { selectToken,setAccessToken} from '@/redux/feature/auth/authSlice';
 import 'react-toastify/dist/ReactToastify.css';
 import {ToastContainer, toast } from 'react-toastify';
+import {useRouter } from "next/navigation";
 import Image from 'next/image'
 type ValueTypes = {
   email: string;
@@ -37,6 +38,7 @@ const LoginComponent = () => {
   const [isLoading, setIsLoading] = useState(false); // Loading state
   const dispatch = useAppDispatch();
   const accessToken = useAppSelector(selectToken);
+  const router = useRouter();
   console.log("Access token: from Redux store", accessToken);
 
   const handleLogin = async (user: ValueTypes)=>{
@@ -59,12 +61,18 @@ const LoginComponent = () => {
       }
   
       const data = await response.json();
+      console.log("Access token Data: ", data)
       console.log("Login response data: ", data);
-      if(data.accessToken){
-           dispatch(setAccessToken(data.accessToken));
+      const { accessToken } = data;
+      console.log("Data AcessToken: ", data)
+      console.log("AcessToken: ", accessToken)
+      if(accessToken){
+           dispatch(setAccessToken(accessToken));
+           console.log("Dispatched Access Token:", accessToken);
            toast.success("Logged in Successfully.", {
             autoClose: 3000,
         });
+        router.push('/');
            console.log("Access token: ", data.accessToken)
 
       }else{

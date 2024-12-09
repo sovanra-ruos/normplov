@@ -53,12 +53,12 @@ export default function Page() {
         ></div>
 
         {/* Content */}
-        <div className="relative z-10 container mx-auto px-4 py-32">
+        <div className="container relative z-10  mx-auto px-4 py-32">
           <h1 className="text-4xl md:text-4xl lg:text-5xl bordered-text font-bold text-white text-center mb-8">
             ស្វែងរកគ្រឹះស្ថានសិក្សាទៅកម្ពុជា
           </h1>
 
-          <div className="max-w-4xl mx-auto space-y-4">
+          <div className=" max-w-4xl mx-auto  space-y-4">
             {/* Search input */}
             <div className="flex">
               <input

@@ -27,7 +27,6 @@ export const QuizLinkAndChatContainer = ({ chatTitle, chatDesc, chatButton, link
             .catch((err) => {
                 console.error('Failed to copy: ', err);
             });
-
     }
 
     return (

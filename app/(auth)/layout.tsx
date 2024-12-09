@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import "../globals.css";
 import { Inter, Suwannaphum } from "next/font/google";
-import SessionWrapper from "../SessionProvider";
-import StoreProvider from "../StoreProvider";
 
 const suwannaphum = Suwannaphum({
   subsets: ["khmer"],
@@ -26,15 +24,10 @@ export default function  AuthLayout({
 }>) {
 return (
   <html lang="en">
-    <SessionWrapper>
       <body className={`${suwannaphum} ${inter} antialiased`}>
-        <StoreProvider>
         {/* Main content */}
-        <main> {children}</main>
-        </StoreProvider>
-        
+        <main> {children}</main> 
       </body>
-    </SessionWrapper>
     </html>
   );
 }
