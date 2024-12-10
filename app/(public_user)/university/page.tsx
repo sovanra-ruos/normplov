@@ -111,7 +111,7 @@ export default function Page() {
           <div className="mt-8 mb-4 flex  justify-center">
             <div className="flex space-x-4">
               <button
-                className="mx-1 rounded-xl px-3 py-2 bg-gray-200 text-gray-500 font-medium  cursor-not-allowed"
+                className="rounded-xl mx-1  px-3 py-2 bg-gray-200 text-gray-500 font-medium  cursor-not-allowed"
                 disabled
               >
                 ថយក្រោយ
