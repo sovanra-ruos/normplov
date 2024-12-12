@@ -1,3 +1,4 @@
+'use client'
 import { ArrowLeft } from "lucide-react";
 import chat from "@/public/chat/chat.png";
 import {
@@ -11,6 +12,7 @@ import {
 } from "@/components/ui/sidebar";
 import { Button } from "./button";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 type Message = {
     id: number; // Unique identifier for the message
@@ -31,6 +33,13 @@ export function AppSidebar({
     selectedChatId = null, // Default to null
     setSelectedChatId = () => {}, // Default to no-op
 }: AppSidebarProps) {
+
+  const router = useRouter()
+
+  const handleBackClick = () => {
+    router.back();
+  }
+
   return (
     <Sidebar>
       <SidebarContent>
@@ -41,7 +50,8 @@ export function AppSidebar({
                 <Button
                   variant="outline"
                   size="icon"
-                  className="bg-primary bg-opacity-10 border-none hover:bg-opacity-20 hover:bg-primary rounded-full shadow-none"
+                  className="bg-primary bg-opacity-10 border-none hover:bg-opacity-20 hover:bg-primary rounded-full shadow-none" 
+                  onClick={handleBackClick}
                 >
                   <ArrowLeft color="#0BBB8A" />
                 </Button>

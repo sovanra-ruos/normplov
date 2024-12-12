@@ -11,7 +11,7 @@ import placeholderImage from '@/public/Quiz/placeholder.jpg'
 type props = {
   title: string;
   desc: string;
-  image: StaticImageData | string;
+  image?: StaticImageData | string ;
   buttonText?: string;
   type?: 'main' | 'learninigStyle'
   badgeText?: string;
@@ -20,8 +20,7 @@ type props = {
 
 export const QuizOptHorizontalContainer = ({ title, desc, image, buttonText, type = 'main', badgeText , onClick}: props) => {
 
-  const [imgSrc, setImgSrc] = useState(image);
-
+  const [imgSrc, setImgSrc] = useState<StaticImageData | string>(image || placeholderImage);
   return (
     <div className={`flex flex-col md:flex-row w-full bg-white p-4 gap-4 rounded-xl ${type === 'learninigStyle' ? 'justify-center items-center' : ''} `}>
       {/* Image Section */}

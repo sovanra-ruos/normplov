@@ -4,7 +4,7 @@ const assessmentApiMap: Record<string, string> = {
     skill: 'assessment/predict-skills',
     personality: 'assessment/personality-assessment',
     interest: 'assessment/process-interest-assessment',
-    value: 'assessment/process-value-assessment',
+    value: 'assessment/value-assessment',
     learningStyle: 'assessment/predict-learning-style',
   };
   

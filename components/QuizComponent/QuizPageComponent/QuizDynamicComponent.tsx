@@ -21,6 +21,7 @@ import { usePredictAssessmentMutation } from '@/redux/feature/assessment/quiz';
 
 
 
+
 type QuizData = {
   questions: { question: string; category: string }[];
   introKh: {
@@ -41,15 +42,11 @@ const quizDataMap: Record<string, QuizData> = {
   // 'all': allTestJson
 };
 
-type QuizQuestion = {
-  question: string;
-  questionIndex: number;
-};
 
 type QuizResponse = { [question: string]: number };
 
 export default function QuizDynamicComponent() {
-  const [predictAssessment, { isLoading, error }] = usePredictAssessmentMutation();
+  const [predictAssessment] = usePredictAssessmentMutation();
   const { testType } = useParams(); // Get the dynamic route parameter
   const router = useRouter();
 
@@ -101,18 +98,22 @@ export default function QuizDynamicComponent() {
 
     const processedResponses = processResponsesFromModifiedJSON(userResponses, quizData.questions);
 
+    
+
     try {
       const result = await predictAssessment({
         assessmentType: assessmentType, // Use the normalized `assessmentType` here
         body: processedResponses,
       }).unwrap();
 
-      console.log("API Response:", result);
+      const testUuid = result.payload.test_uuid
+      
       toast.success("Responses submitted successfully!");
-      router.push(`/test-result/${assessmentType}`); // Use `assessmentType` here too
+
+      router.push(`/test-result/${assessmentType}/${testUuid}`); // Use `assessmentType` here too
     } catch (err) {
-      console.error("API Error:", err);
       toast.error("Failed to submit responses. Please try again.");
+      console.log(err)
     }
   };
 

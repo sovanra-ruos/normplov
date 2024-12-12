@@ -16,29 +16,26 @@ import learningStyleJson from '@/app/(user)/json/learningStyleKh.json';
 import allTestJson from '@/app/(user)/json/allTest.json';
 import { QuizLinkAndChatContainer } from '../QuizLinkAndChatContainer';
 import { Feedback } from '../../General/Feedback';
-import { RecommendationCard } from '../RecommendationCard';
-import QuizHeader from '../QuizHeader';
 import { SkillResultComponent } from './ResultContentComponent/SkillResultComponent';
-import { InterestResultComponent } from './ResultContentComponent/InterestResultComponent';
 import { LearningStyleResultComponent } from './ResultContentComponent/LearningStyleResultComponent';
 
 type IntroKh = {
     title: string;
     highlight: string;
     description: string;
-  };
-  
-  type Recommendation = {
+};
+
+type Recommendation = {
     jobTitle: string;
     jobdesc: string;
     majors: string[]; // Array of related majors
     unis: string[];   // Array of related universities
-  };
-  
-  type QuizData = {
+};
+
+type QuizData = {
     introKh: IntroKh;              // Introductory data for the result
     Recommendation: Recommendation; // Career recommendations
-  };
+};
 
 const resultDataMap: Record<string, QuizData> = {
     'personality': personalityJson,
@@ -50,7 +47,18 @@ const resultDataMap: Record<string, QuizData> = {
 };
 
 export default function ResultDynamicComponent() {
-    const { resultType } = useParams();
+    const params = useParams();
+
+    // Normalize the values
+    const resultType = Array.isArray(params.resultType) ? params.resultType[0] : params.resultType;
+    const uuid = Array.isArray(params.uuid) ? params.uuid[0] : params.uuid;
+
+    // Handle invalid or missing parameters
+    if (!resultType || !uuid) {
+        return <p>Loading...</p>;
+    }
+
+
 
     // Ensure resultType is valid
     if (!resultType || Array.isArray(resultType)) {
@@ -69,16 +77,14 @@ export default function ResultDynamicComponent() {
         );
     }
 
-    const { introKh, Recommendation } = resultData;
-
-    console.log('resultType:', resultType);
+    const { introKh } = resultData;
 
     const renderResultContent = () => {
         switch (resultType) {
             case 'personality':
                 return (
                     <div>
-                        
+
                     </div>
                 );
             case 'skill':
@@ -87,17 +93,18 @@ export default function ResultDynamicComponent() {
                 );
             case 'interest':
                 return (
-                    <InterestResultComponent/>
+                    // <InterestResultComponent/>
+                    <div></div>
                 );
             case 'value':
                 return (
                     <div>
-                        
+
                     </div>
                 );
             case 'learningStyle':
                 return (
-                    <LearningStyleResultComponent/>
+                    <LearningStyleResultComponent uuid={uuid} />
                 );
             default:
                 return <p>Unknown result type</p>;
@@ -119,19 +126,6 @@ export default function ResultDynamicComponent() {
             <div >
                 {renderResultContent()}
             </div>
-
-
-            <div className='space-y-4 lg:space-y-8 max-w-7xl mx-auto p-4 md:p-10 lg:p-12 '>
-
-                <QuizHeader title="ការងារទាំងនេះអាចនឹងសាកសមជាមួយអ្នក" description="These career may suitable for you" size='sm' type='result' />
-
-                <div className='grid grid-cols-1 lg:grid-cols-2 gap-4'>
-                    <RecommendationCard jobTitle={Recommendation.jobTitle} jobDesc={Recommendation.jobdesc} majors={Recommendation.majors} unis={Recommendation.unis} />
-                    <RecommendationCard jobTitle={Recommendation.jobTitle} jobDesc={Recommendation.jobdesc} majors={Recommendation.majors} unis={Recommendation.unis} />
-                </div>
-
-            </div>
-
 
             {/* Share Link and chat with ai section */}
             <QuizLinkAndChatContainer chatTitle='សន្ទនាជាមួយ AI' chatDesc='ស្វែងយល់បន្ថែមពីលទ្ធផលរបស់អ្នក' chatButton='សន្ទនាឥឡូវនេះ' linkTitle='ចែករំលែកលទ្ធផលតេស្តរបស់អ្នក' linkDesc='អនុញ្ញាតឱ្យគ្រួសារនិងមិត្តភក្តិរបស់អ្នកអាចមើលឃើញពីលទ្ធផលរបស់អ្នកដោយការចែករំលែកតំណភ្ជាប់នេះ' linkValue='http://example.com/link/to/document' />

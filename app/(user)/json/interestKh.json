@@ -14,62 +14,62 @@
     {
       "question": "I enjoy working with tools or machinery to solve problems.",
       "questionIndex": 0,
-      "category": "Q1"
+      "category": "q1"
     },
     {
       "question": "I prefer doing hands-on tasks rather than working with abstract ideas.",
       "questionIndex": 1,
-      "category": "Q2"
+      "category": "q2"
     },
     {
       "question": "I like solving complex problems that require deep thinking and research.",
       "questionIndex": 2,
-      "category": "Q3"
+      "category": "q3"
     },
     {
       "question": "I am more interested in analyzing data and conducting experiments than in working with people.",
       "questionIndex": 3,
-      "category": "Q4"
+      "category": "q4"
     },
     {
       "question": "I enjoy expressing myself through artistic activities like painting, writing, or music.",
       "questionIndex": 4,
-      "category": "Q5"
+      "category": "q5"
     },
     {
       "question": "I prefer creating something new or original, like designing a website or writing a story.",
       "questionIndex": 5,
-      "category": "Q6"
+      "category": "q6"
     },
     {
       "question": " I enjoy helping others and providing emotional support when needed.",
       "questionIndex": 6,
-      "category": "Q7"
+      "category": "q7"
     },
     {
       "question": "I like being around people and prefer to work in a group rather than alone.",
       "questionIndex": 7,
-      "category": "Q8"
+      "category": "q8"
     },
     {
       "question": "I enjoy persuading others to take action or to try new ideas.",
       "questionIndex": 8,
-      "category": "Q9"
+      "category": "q9"
     },
     {
       "question": "I like taking on leadership roles and making decisions that affect others.",
       "questionIndex": 9,
-      "category": "Q10"
+      "category": "q10"
     },
     {
       "question": "I prefer following rules and working in a structured environment.",
       "questionIndex": 10,
-      "category": "Q11"
+      "category": "q11"
     },
     {
       "question": "I enjoy working with numbers, organizing data, and managing systems.",
       "questionIndex": 11,
-      "category": "Q12"
+      "category": "q12"
     }
   ],
   "Recommendation": {

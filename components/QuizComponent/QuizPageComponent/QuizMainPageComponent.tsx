@@ -56,7 +56,7 @@ export default function QuizMainPageComponent() {
 
 
     return (
-        <div className='w-full bg-bgPrimaryLight '>
+        <div className='w-full bg-bgPrimaryLight pb-6 lg:pb-12'>
 
             <QuizIntroContainer
                 introTitle={introKh.title}
@@ -69,7 +69,7 @@ export default function QuizMainPageComponent() {
                 RepresentedImageTitle={instructKh.representedImageTitle}
             />
 
-            <div className='max-w-7xl mx-auto space-y-6 lg:space-y-12 p-4 md:p-10 lg:p-0'>
+            <div className='max-w-7xl mx-auto space-y-6 lg:space-y-12 p-4 md:p-10 lg:p-12'>
                 <QuizHeader
                     title={typeOfQuizKh.title}
                     description={typeOfQuizKh.description}
