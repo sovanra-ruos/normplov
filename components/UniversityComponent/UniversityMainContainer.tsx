@@ -1,7 +1,7 @@
 "use client"
 import { FaSearch } from "react-icons/fa";
 import Select from "react-select";
-import React, { useState } from "react";
+import React from "react";
 
 // Define types for dropdown options
 type OptionType = {

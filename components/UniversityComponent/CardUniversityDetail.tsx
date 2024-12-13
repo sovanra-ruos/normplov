@@ -76,23 +76,18 @@ const Button1 = React.forwardRef<
 Button1.displayName = "Button1";
 
 export default function CardUniversityDetail({
-  uuid,
   kh_name,
   en_name,
   location,
-  province_name,
-  popular_major,
   logo_url,
   cover_image,
   phone,
   lowest_price,
   highest_price,
-  map,
   email,
   website,
   description,
   mission,
-  majors,
   vision,
 }: UniversityType) {
   const [isOpen, setIsOpen] = React.useState(false);

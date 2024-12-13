@@ -165,8 +165,9 @@ export default function page() {
           </Link>
         </div>
         <div className="max-w-7xl mx-auto my-4 md:my-6 mt-10  grid w-auto auto-rows-fr grid-cols-1 lg:gap-8 md:gap-8 gap-4 sm:mt-12 lg:grid-cols-2 md:grid-cols-1">
-        {universities.map((university) =>(
+        {universities.map((university,index) =>(
             <CardUniversity
+            key={index}
             kh_name={university.name}
             en_name={university.englishName}
             location={university.address}

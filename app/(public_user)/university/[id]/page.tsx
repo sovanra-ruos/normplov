@@ -1,32 +1,30 @@
 "use client";
 import CardUniversityDetail from "@/components/UniversityComponent/CardUniversityDetail";
-import React from "react";
-import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
+import React, { useState, useEffect } from "react";
 
 // Type definition for universities
 type UniversityType = {
-    uuid: string;
-    kh_name: string;
-    en_name: string;
-    location: string;
-    province_name: string;
-    popular_major: string;
-    logo_url: string;
-    cover_image: string | null;  // Handle null value
-    phone: string;
-    lowest_price: number;
-    highest_price: number;
-    map: string;
-    email: string;
-    website: string;
-    description: string;
-    mission: string;
-    vision: string;
-    majors: string[];  // Handle empty array
-  };
+  uuid: string;
+  kh_name: string;
+  en_name: string;
+  location: string;
+  province_name: string;
+  popular_major: string;
+  logo_url: string;
+  cover_image: string | null;  // Handle null value
+  phone: string;
+  lowest_price: number;
+  highest_price: number;
+  map: string;
+  email: string;
+  website: string;
+  description: string;
+  mission: string;
+  vision: string;
+  majors: string[];  // Handle empty array
+};
 
-export default function page({ params }: { params: { id: string } }) {
+export default function Page({ params }: { params: { id: string } }) { // Renamed to 'Page'
   const [universities, setUniversities] = useState<UniversityType[]>([]); // Initialize as empty array
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
@@ -53,16 +51,21 @@ export default function page({ params }: { params: { id: string } }) {
             console.error("No valid university data found:", data);
             setError("Data format error: No valid university data found");
           }
-        } catch (error: any) {
-          console.error("Error fetching data:", error);
-          setError(error.message || "Something went wrong while fetching data");
-        } finally {
-          setLoading(false);
-        }
-      };
-  
-      fetchData();
-    }, [params.id]);
+        } catch (error: unknown) {
+            if (error instanceof Error) {
+              console.error("Error fetching data:", error.message);
+              setError(error.message || "Something went wrong while fetching data");
+            } else {
+              console.error("An unexpected error occurred", error);
+              setError("Something went wrong while fetching data");
+            }
+          } finally {
+            setLoading(false);
+          }
+        };
+      
+        fetchData();
+      }, [params.id]);
 
   if (loading) {
     return <div>Loading...</div>;
@@ -77,7 +80,7 @@ export default function page({ params }: { params: { id: string } }) {
       {universities.length > 0 ? (
         universities.map((university, index) => (
           <CardUniversityDetail
-            key={university.uuid}
+            key={index}
             uuid={university.uuid}
             kh_name={university.kh_name}
             en_name={university.en_name}
@@ -103,4 +106,4 @@ export default function page({ params }: { params: { id: string } }) {
       )}
     </div>
   );
-}
+} 

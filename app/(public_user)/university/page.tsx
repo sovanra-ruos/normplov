@@ -23,6 +23,7 @@ type UniversityType = {
 };
 
 export default function Page() {
+  const router = useRouter();
   // Lift the state for selectedUniversity here
   const [selectedUniversity, setSelectedUniversity] =
     useState<OptionType | null>(null);
@@ -52,14 +53,19 @@ export default function Page() {
           console.error("No schools found in response:", data);
           setError("Data format error: No schools found");
         }
-      } catch (error: any) {
-        console.error("Error fetching data:", error);
-        setError(error.message || "Something went wrong while fetching data");
+      } catch (error: unknown) {
+        if (error instanceof Error) {
+          console.error("Error fetching data:", error.message);
+          setError(error.message || "Something went wrong while fetching data");
+        } else {
+          console.error("An unexpected error occurred", error);
+          setError("Something went wrong while fetching data");
+        }
       } finally {
         setLoading(false);
       }
     };
-
+  
     fetchData();
   }, []);
 
@@ -72,8 +78,6 @@ export default function Page() {
   }
 
   //------------------------------------------------------------------------------------------------
-
-  const router = useRouter();
 
   const handleCardClick = (id: string) => {
     router.push(`/university/${id}`);
@@ -99,7 +103,7 @@ export default function Page() {
             {universities.length > 0 ? (
               universities.map((university, index) => (
                 <CardUniversity
-                  key={university.uuid}
+                  key={index}
                   kh_name={university.kh_name}
                   en_name={university.en_name}
                   location={university.location}
