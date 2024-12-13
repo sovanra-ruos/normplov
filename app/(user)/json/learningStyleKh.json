@@ -13,35 +13,43 @@
   "questions": [
     {
       "question": "I understand information best when it is presented using diagrams, charts, or videos.",
-      "questionIndex": 0
+      "questionIndex": 0,
+      "category": "Q1_Visual"
     },
     {
       "question": "Using color-coding or visual aids helps me organize and recall information.",
-      "questionIndex": 1
+      "questionIndex": 1,
+      "category": "Q2_Visual"
     },
     {
       "question": "I learn more effectively when someone explains concepts to me verbally.",
-      "questionIndex": 2
+      "questionIndex": 2,
+      "category": "Q3_Auditory"
     },
     {
       "question": "Group discussions or talking through ideas help me grasp concepts better.",
-      "questionIndex": 3
+      "questionIndex": 3,
+      "category": "Q4_Auditory"
     },
     {
       "question": "I prefer to learn by reading detailed instructions or writing notes.",
-      "questionIndex": 4
+      "questionIndex": 4,
+      "category": "Q5_ReadWrite"
     },
     {
       "question": "Writing summaries or lists helps me retain new information.",
-      "questionIndex": 5
+      "questionIndex": 5,
+      "category": "Q6_ReadWrite"
     },
     {
       "question": "I learn best by doing hands-on activities or experiments.",
-      "questionIndex": 6
+      "questionIndex": 6,
+      "category": "Q7_Kinesthetic"
     },
     {
       "question": "Practicing real-life examples or physically interacting with materials helps me understand better.",
-      "questionIndex": 7
+      "questionIndex": 7,
+      "category": "Q8_Kinesthetic"
     }
   ],
   "Recommendation": {
@@ -81,29 +89,27 @@
         "badgeText": "Understanding Complex Concepts"
       }
     ],
-
     "learningStyleCard": [
-    {
-      "title": "Auditory Learning",
-      "desc": "Learners who process and retain information best through hearing and verbal communication. Learners who process and retain information best through hearing and verbal communication.",
-      "label": 1
-    },
-    {
-      "title": "Visual Learning",
-      "desc": "Learners who prefer to absorb and process information through images, diagrams, charts, and other visual aids.",
-      "label": 2
-    },
-    {
-      "title": "Read/Write Learning",
-      "desc": "Learners who prefer to interact with written words and rely on text-based resources to understand and process information.",
-      "label": 3
-    },
-    {
-      "title": "Kinesthetic",
-      "desc": "Learners who prefer hands-on, experiential learning and thrive when they can engage physically with the material.",
-      "label": 2
-    }
-  ]
-
+      {
+        "title": "Auditory Learning",
+        "desc": "Learners who process and retain information best through hearing and verbal communication. Learners who process and retain information best through hearing and verbal communication.",
+        "label": 1
+      },
+      {
+        "title": "Visual Learning",
+        "desc": "Learners who prefer to absorb and process information through images, diagrams, charts, and other visual aids.",
+        "label": 2
+      },
+      {
+        "title": "Read/Write Learning",
+        "desc": "Learners who prefer to interact with written words and rely on text-based resources to understand and process information.",
+        "label": 3
+      },
+      {
+        "title": "Kinesthetic",
+        "desc": "Learners who prefer hands-on, experiential learning and thrive when they can engage physically with the material.",
+        "label": 2
+      }
+    ]
   }
 }

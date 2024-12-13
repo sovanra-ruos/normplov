@@ -1,6 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
-import { Textarea } from "@//components/ui/textarea"
+import { Textarea } from "@/components/ui/textarea"
 import { QuizButton } from '../QuizComponent/QuizButton';
 
 type props = {

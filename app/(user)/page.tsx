@@ -4,8 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { GoArrowRight } from "react-icons/go";
 import { BiRightArrowAlt } from "react-icons/bi";
-import TeamProfilesHomePage from "@//components/ui/TeamProfilesHomePaage";
-import ProcessHomePage from "@//components/ui/ProcessHomePage";
+import TeamProfilesHomePage from "@/components/ui/TeamProfilesHomePaage";
+import ProcessHomePage from "@/components/ui/ProcessHomePage";
 
 // Define the types for the props
 interface FeatureCardProps {

@@ -5,16 +5,20 @@ import {
     AccordionContent,
     AccordionItem,
     AccordionTrigger,
-} from "@//components/ui/accordion"
+} from "@/components/ui/accordion"
+
+type Major = {
+    major_name: string;
+    schools: string[];
+};
 
 type props = {
     jobTitle: string;
     jobDesc: string;
-    majors: string[];
-    unis: string[];
+    majors: Major[];
 }
 
-export const RecommendationCard = ({ jobTitle, jobDesc, majors, unis }: props) => {
+export const RecommendationCard = ({ jobTitle, jobDesc, majors }: props) => {
 
     const [isExpanded, setIsExpanded] = useState(false);
 
@@ -52,30 +56,51 @@ export const RecommendationCard = ({ jobTitle, jobDesc, majors, unis }: props) =
                     <AccordionItem className='border-none' value="item-1">
                         <AccordionTrigger className='text-lg md:text-xl font-semibold pb-2'>Recommended Majors</AccordionTrigger>
                         <AccordionContent>
-                            <ul className="space-y-2 text-lg list-disc pl-6">
-                                {majors.map((major, index) => (
-                                    <li key={index}>{major}</li>
-                                ))}
-                            </ul>
+                            {/* {majors.length > 0 ? (
+                                majors.map((major, index) => (
+                                    <ul key={index} className="space-y-2 text-lg list-disc pl-6">
+                                        <Accordion type="single" collapsible>
+                                            <AccordionItem className='border-none' value={`major-${index}`}>
+                                                <AccordionTrigger className='text-lg md:text-xl pb-2'>{major}</AccordionTrigger>
+                                                <AccordionContent>
+                                                    {unis.length > 0 ? (
+                                                        <ul className="space-y-2 text-base md:text-lg list-disc pl-6">
+                                                            {unis.map((uni, uniIndex) => (
+                                                                <li key={uniIndex}>{uni}</li>
+                                                            ))}
+                                                        </ul>
+                                                    ) : (
+                                                        <p>No universities available for this major.</p>
+                                                    )}
+                                                </AccordionContent>
+                                            </AccordionItem>
+                                        </Accordion>
+                                    </ul>
+                                ))
+                            ) : (
+                                <p>No recommended majors available.</p>
+                            )} */}
+                            {majors.length > 0 ? (
+                                majors.map((major, index) => (
+                                    <div key={index}>
+                                        <p className="font-semibold">{major.major_name}</p>
+                                        {major.schools.length > 0 ? (
+                                            <ul className="space-y-2 text-base md:text-lg list-disc pl-6">
+                                                {major.schools.map((school, schoolIndex) => (
+                                                    <li key={schoolIndex}>{school}</li>
+                                                ))}
+                                            </ul>
+                                        ) : (
+                                            <p className='text-gray-500'>No universities available for this major.</p>
+                                        )}
+                                    </div>
+                                ))
+                            ) : (
+                                <p className='text-gray-500'>No recommended majors available.</p>
+                            )}
                         </AccordionContent>
                     </AccordionItem>
                 </Accordion>
-                <Accordion type="single" collapsible>
-                    <AccordionItem className='border-none' value="item-1">
-                        <AccordionTrigger className='text-lg md:text-xl font-semibold pb-2'>Universities</AccordionTrigger>
-                        <AccordionContent>
-                            <ul className="space-y-2 text-base md:text-lg list-disc pl-6">
-                                {unis.map((uni, index) => (
-                                    <li key={index}>{uni}</li>
-                                ))}
-                            </ul>
-                        </AccordionContent>
-                    </AccordionItem>
-                </Accordion>
-
-
-
-
             </div>
 
         </div>

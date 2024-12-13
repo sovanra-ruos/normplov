@@ -1,5 +1,5 @@
 import React from "react";
-import OTPComponentReset from "@//components/AuthComponents/OTPComponentReset";
+import OTPComponentReset from "@/components/AuthComponents/OTPComponentReset";
 
 export default function page() {
   return (

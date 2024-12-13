@@ -3,11 +3,11 @@
 
 'use client';
 import React, { useState, useEffect } from "react";
-import OTPValidation from "@//components/AuthComponents/OTPValidation";
+import OTPValidation from "@/components/AuthComponents/OTPValidation";
 import { IoCloseSharp } from "react-icons/io5";
 import Button from "./ButtonComponentForAuth";
-import { useVerifyCodeRegisterMutation, useResendVerifyCodeRegisterMutation } from "@//redux/service/auth";
-import { useAppSelector } from "@//redux/hooks";
+import { useVerifyCodeRegisterMutation, useResendVerifyCodeRegisterMutation } from "@/redux/service/auth";
+import { useAppSelector } from "@/redux/hooks";
 import { useRouter } from "next/navigation";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";

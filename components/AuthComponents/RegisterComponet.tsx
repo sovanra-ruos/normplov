@@ -1,6 +1,6 @@
 'use client';
 import React, { useState } from "react";
-import { useAppDispatch } from '@//redux/hooks';
+import { useAppDispatch } from '@/redux/hooks';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
 import * as Yup from 'yup';
@@ -12,8 +12,8 @@ import ErrorDynamic from './ErrorComponent';
 import PasswordField from './PasswordField';
 import Link from 'next/link';
 import Button from './ButtonComponentForAuth';
-import { useRegisterMutation } from '@//redux/service/auth';
-import { setEmail } from "@//redux/feature/verify/verifySlice";
+import { useRegisterMutation } from '@/redux/service/auth';
+import { setEmail } from "@/redux/feature/verify/verifySlice";
 import { useRouter } from "next/navigation";
 import Image from 'next/image';
 

@@ -1,8 +1,8 @@
 'use client'
-import QuizHeader from '@//components/QuizComponent/QuizHeader'
-import { QuizIntroContainer } from '@//components/QuizComponent/QuizIntroContainer'
+import QuizHeader from '@/components/QuizComponent/QuizHeader'
+import { QuizIntroContainer } from '@/components/QuizComponent/QuizIntroContainer'
 import React from 'react'
-import { QuizOptHorizontalContainer } from '@//components/QuizComponent/QuizOptHorizontalContainer'
+import { QuizOptHorizontalContainer } from '@/components/QuizComponent/QuizOptHorizontalContainer'
 import { useRouter } from 'next/navigation';
 // Import image
 import interest from '@/public/Quiz/optQuiz/Interest.png'
@@ -13,13 +13,13 @@ import value from '@/public/Quiz/optQuiz/value.png'
 import personality from '@/public/Quiz/optQuiz/Personality.png'
 
 // Import json
-import generalTestJson from '@//app/(user)/json/testGeneralKh.json'
-import personalityJson from '@//app/(user)/json/personalityKh.json'
-import interestJson from '@//app/(user)/json/interestKh.json'
-import skillJson from '@//app/(user)/json/skillKh.json'
-import valueJson from '@//app/(user)/json/valueKh.json'
-import allTestJson from '@//app/(user)/json/allTest.json'
-import learningStyleJson from '@//app/(user)/json/learningStyleKh.json'
+import generalTestJson from '@/app/(user)/json/testGeneralKh.json'
+import personalityJson from '@/app/(user)/json/personalityKh.json'
+import interestJson from '@/app/(user)/json/interestKh.json'
+import skillJson from '@/app/(user)/json/skillKh.json'
+import valueJson from '@/app/(user)/json/valueKh.json'
+import allTestJson from '@/app/(user)/json/allTest.json'
+import learningStyleJson from '@/app/(user)/json/learningStyleKh.json'
 
 
 export default function QuizMainPageComponent() {
@@ -56,7 +56,7 @@ export default function QuizMainPageComponent() {
 
 
     return (
-        <div className='w-full bg-bgPrimaryLight '>
+        <div className='w-full bg-bgPrimaryLight pb-6 lg:pb-12'>
 
             <QuizIntroContainer
                 introTitle={introKh.title}
@@ -69,7 +69,7 @@ export default function QuizMainPageComponent() {
                 RepresentedImageTitle={instructKh.representedImageTitle}
             />
 
-            <div className='max-w-7xl mx-auto space-y-6 lg:space-y-12 p-4 md:p-10 lg:p-0'>
+            <div className='max-w-7xl mx-auto space-y-6 lg:space-y-12 p-4 md:p-10 lg:p-12'>
                 <QuizHeader
                     title={typeOfQuizKh.title}
                     description={typeOfQuizKh.description}

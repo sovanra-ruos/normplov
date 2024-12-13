@@ -1,5 +1,5 @@
 import React from "react";
-import RegisterComponent from "@//components/AuthComponents/RegisterComponet";
+import RegisterComponent from "@/components/AuthComponents/RegisterComponet";
 import Image from 'next/image'
 export default function page() {
   return (

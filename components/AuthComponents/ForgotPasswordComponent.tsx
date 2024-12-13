@@ -7,12 +7,12 @@ import Label from './LabelComponent';
 import DynamicField from './AuthField';
 import ErrorDynamic from './ErrorComponent';
 import Button from './ButtonComponentForAuth'; // Adjust the import path as needed
-import { useForgotPasswordMutation } from '@//redux/service/auth';
+import { useForgotPasswordMutation } from '@/redux/service/auth';
 import 'react-toastify/dist/ReactToastify.css';
 import {ToastContainer, toast } from 'react-toastify';
 import { useRouter } from "next/navigation";
-import { useAppDispatch } from '@//redux/hooks';
-import { setEmail } from '@//redux/feature/verify/verifySlice';
+import { useAppDispatch } from '@/redux/hooks';
+import { setEmail } from '@/redux/feature/verify/verifySlice';
 type ValueTypes = {
     email: string;
 };

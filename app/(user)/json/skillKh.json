@@ -15,63 +15,78 @@
     "questions": [
     {
       "question": "When faced with a challenging problem, I find multiple ways to approach a solution.",
-      "questionIndex": 0
+      "questionIndex": 0,
+      "category": "Complex Problem Solving"
     },
     {
       "question": "I always evaluate different perspectives before making a decision.",
-      "questionIndex": 1
+      "questionIndex": 1,
+      "category": "Critical Thinking Score"
     },
     {
       "question": "I can easily apply mathematical concepts to everyday situations.",
-      "questionIndex": 2
+      "questionIndex": 2,
+      "category": "Mathematics Score"
     },
     {
       "question": "I enjoy solving scientific problems through experimentation and research.",
-      "questionIndex": 3
+      "questionIndex": 3,
+      "category": "Science Score"
     },
     {
       "question": "I can adjust my study methods based on the subject or task at hand.",
-      "questionIndex": 4
+      "questionIndex": 4,
+      "category": "Learning Strategy Score"
     },
     {
       "question": "I frequently track my progress when working on a task or project.",
-      "questionIndex": 5
+      "questionIndex": 5,
+      "category": "Monitoring Score"
     },
     {
       "question": "I listen carefully to others and fully understand their point of view before responding.",
-      "questionIndex": 6
+      "questionIndex": 6,
+      "category": "Active Listening Score"
     },
     {
       "question": "I can easily recognize the emotional state of others based on their actions or words.",
-      "questionIndex": 7
+      "questionIndex": 7,
+      "category": "Social Perceptiveness Score"
     },
     {
       "question": "I often consider multiple factors before making an important decision.",
-      "questionIndex": 8
+      "questionIndex": 8,
+      "category": "Judgment and Decision Making Score"
     },
     {
       "question": "I feel comfortable teaching or guiding others when they need help learning something new.",
-      "questionIndex": 9
+      "questionIndex": 9,
+      "category": "Instructing Score"
     },
     {
       "question": "I actively seek new knowledge and skills to improve myself.",
-      "questionIndex": 10
+      "questionIndex": 10,
+      "category": "Active Learning Score"
     },
     {
       "question": "I am able to organize my time effectively to meet deadlines.",
-      "questionIndex": 11
+      "questionIndex": 11,
+      "category": "Time Management Score"
     },
     {
       "question": "I am able to organize my thoughts clearly and logically in writing.",
-      "questionIndex": 12
+      "questionIndex": 12,
+      "category": "Writing Score"
     },
     {
       "question": "I feel confident speaking in front of groups or audiences.",
-      "questionIndex": 13
+      "questionIndex": 13,
+      "category": "Speaking Score"
     },
     {
       "question": "I can understand complex reading material and summarize key points effectively.",
-      "questionIndex": 14
+      "questionIndex": 14,
+      "category": "Reading Comprehension Score"
     }
     
 

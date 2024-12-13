@@ -1,5 +1,5 @@
 import React from "react";
-import ProfileForm from "@//components/ProfileComponent/ProfileFormComponent";
+import ProfileForm from "@/components/ProfileComponent/ProfileFormComponent";
 
 export default function page() {
   return (

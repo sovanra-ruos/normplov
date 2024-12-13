@@ -1,9 +1,9 @@
 'use client';
 
 import { useState } from 'react';
-import { ChatBubble, ChatBubbleAvatar, ChatBubbleMessage } from '@//components/ui/chat/chat-bubble';
-import { ChatMessageList } from '@//components/ui/chat/chat-message-list';
-import { ChatInput } from '@//components/ui/chat/chat-input';
+import { ChatBubble, ChatBubbleAvatar, ChatBubbleMessage } from '@/components/ui/chat/chat-bubble';
+import { ChatMessageList } from '@/components/ui/chat/chat-message-list';
+import { ChatInput } from '@/components/ui/chat/chat-input';
 import { Send } from 'lucide-react';
 
 type Message = {

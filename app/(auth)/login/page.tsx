@@ -1,5 +1,5 @@
 import React from "react";
-import LoginComponent from "@//components/AuthComponents/LoginComponent";
+import LoginComponent from "@/components/AuthComponents/LoginComponent";
 import Image from 'next/image'
 
 export default function page() {
