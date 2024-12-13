@@ -17,6 +17,7 @@ export function middleware(request: NextRequest) {
 
     const refreshToken = request.cookies.get("normplov-refresh-token");
 
+
     if (!refreshToken) {
         console.log("No refresh token found, redirecting to login...");
         return NextResponse.redirect(new URL("/login", request.url));
@@ -28,5 +29,7 @@ export function middleware(request: NextRequest) {
 
 // Optional: Add matchers to specify which routes the middleware applies to
 export const config = {
-    matcher: ["/test"], // Example routes
+    matcher: [
+        "/test",
+    ], // Example routes
 };
