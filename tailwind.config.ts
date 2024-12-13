@@ -38,11 +38,12 @@ declare module 'tailwindcss' {
       [key: string]: string;
     };
   }
+  
 }
 
 // Tailwind configuration object
 const config: Config = {
-  darkMode: 'class', // `darkMode` should be at the root level
+  darkMode: 'class',
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -118,8 +119,13 @@ const config: Config = {
         'accordion-up': 'accordion-up 0.2s ease-out'
       }
     },
+    images: {
+      domains: ['136.228.158.126'], // Add your image domain here
+    },
   },
+  
   plugins: [tailwindcssAnimate],
 };
 
 export default config;
+

@@ -1,10 +1,8 @@
 type UniversityCard = {
-    uniId : string ;
-    uniNameKh : string ;
-    uniNameEn : string ;
-    uniLogo : string;
-    uniAddress : string;
-    uniMajor : string; 
-    
-
-}
+  id: string;
+  name: string;
+  englishName: string;
+  address: string;
+  major: string;
+  logo: string;
+};

@@ -1,4 +1,4 @@
-import CardUniversity from "@//components/ui/CardUniversity";
+import CardUniversity from "@/components/UniversityComponent/CardUniversity";
 import FeatureGrid from "@//components/ui/FeatureGrid";
 import Image from "next/image";
 import Link from "next/link";
@@ -13,6 +13,41 @@ interface FeatureCardProps {
   title: string; // Title of the feature
   description: string; // Description of the feature
 }
+
+const universities = [
+  {
+    name: "សាកលវិទ្យាល័យ ភូមិន្ទភ្នំពេញ",
+    englishName: "Royal University of Phnom Penh",
+    address: "សង្កាត់ទឹកល្អក់១ ខណ្ឌទួលគោក",
+    major : "ព័ត៌មានវិទ្យា",
+    logo: "/assets/itc.png",
+    link: "/university-detail",
+  },
+  {
+    name: "សាកលវិទ្យាល័យ ភូមិន្ទភ្នំពេញ",
+    englishName: "Royal University of Phnom Penh",
+    address: "សង្កាត់ទឹកល្អក់១ ខណ្ឌទួលគោក",
+    major : "ព័ត៌មានវិទ្យា",
+    logo: "/assets/itc.png",
+    link: "#",
+  },
+  {
+      name: "សាកលវិទ្យាល័យ ភូមិន្ទភ្នំពេញ",
+      englishName: "Royal University of Phnom Penh",
+      address: "សង្កាត់ទឹកល្អក់១ ខណ្ឌទួលគោក",
+      major : "ព័ត៌មានវិទ្យា",
+      logo: "/assets/itc.png",
+      link: "#",
+    },
+    {
+      name: "សាកលវិទ្យាល័យ ភូមិន្ទភ្នំពេញ",
+      englishName: "Royal University of Phnom Penh",
+      address: "សង្កាត់ទឹកល្អក់១ ខណ្ឌទួលគោក",
+      major : "ព័ត៌មានវិទ្យា",
+      logo: "/assets/itc.png",
+      link: "#",
+    },
+];
 
 export default function page() {
   return (
@@ -129,8 +164,16 @@ export default function page() {
             </div>
           </Link>
         </div>
-        <div className="max-w-7xl mx-auto my-4 md:my-6">
-          <CardUniversity limit={4} />
+        <div className="max-w-7xl mx-auto my-4 md:my-6 mt-10  grid w-auto auto-rows-fr grid-cols-1 lg:gap-8 md:gap-8 gap-4 sm:mt-12 lg:grid-cols-2 md:grid-cols-1">
+        {universities.map((university) =>(
+            <CardUniversity
+            kh_name={university.name}
+            en_name={university.englishName}
+            location={university.address}
+            popular_major={university.major}
+            logo_url={university.logo}
+            />
+          ))}
           <Link
             href="/"
             className="text-xl  lg:hidden md:flex hidden justify-end mt-6 items-center font-bold text-center text-textprimary"
