@@ -58,8 +58,6 @@ export default function ResultDynamicComponent() {
         return <p>Loading...</p>;
     }
 
-
-
     // Ensure resultType is valid
     if (!resultType || Array.isArray(resultType)) {
         return <p>Invalid result type</p>;
@@ -104,7 +102,7 @@ export default function ResultDynamicComponent() {
                 );
             case 'learningStyle':
                 return (
-                    <LearningStyleResultComponent uuid={uuid} />
+                    <LearningStyleResultComponent />
                 );
             default:
                 return <p>Unknown result type</p>;

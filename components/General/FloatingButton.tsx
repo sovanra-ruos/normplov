@@ -2,9 +2,10 @@
 
 import { useEffect, useState } from "react";
 import { ArrowUp, MessageSquareText } from "lucide-react";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 const FloatingButtons = () => {
+  const pathname = usePathname();
   const router = useRouter();
   const [isVisible, setIsVisible] = useState(false);
 
@@ -32,6 +33,8 @@ const FloatingButtons = () => {
     router.push("/chat");
   };
 
+  const isResultTestRoute = pathname.startsWith("/test-result/");
+
   return (
     <div className="fixed right-4 flex flex-col items-end space-y-4 ">
       {/* Back to Top Button */}
@@ -47,19 +50,23 @@ const FloatingButtons = () => {
       )}
 
       {/* Navigation Button */}
-      <button
-        onClick={handleNavigation}
-        className={`bg-secondary text-white w-12 h-12 rounded-full shadow-lg flex items-center justify-center transition ${
-          isVisible ? "bottom-20" : "bottom-4"
-        }`}
-        style={{
-          position: "fixed",
-        }}
-        aria-label="Chat"
-        title="Chat"
-      >
-        <MessageSquareText className="w-6 h-6" />
-      </button>
+      {isResultTestRoute && (
+        <button
+          onClick={handleNavigation}
+          className={`bg-secondary text-white w-12 h-12 rounded-full shadow-lg flex items-center justify-center transition ${isVisible ? "bottom-20" : "bottom-4"
+            }`}
+          style={{
+            position: "fixed",
+          }}
+          aria-label="Chat"
+          title="Chat"
+        >
+          <MessageSquareText className="w-6 h-6" />
+        </button>
+      )
+
+      }
+
     </div>
   );
 };
