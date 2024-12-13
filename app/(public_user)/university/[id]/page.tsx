@@ -87,8 +87,8 @@ export default function Page({ params }: { params: { id: string } }) { // Rename
             province_name={university.province_name}
             popular_major={university.popular_major}
             location={university.location}
-            logo_url={university.logo_url}
-            cover_image={university.cover_image || "/default_cover_image.png"} 
+            logo_url={university.logo_url }
+            cover_image={university.cover_image || "/default.png"} 
             phone={university.phone}
             lowest_price={university.lowest_price}
             highest_price={university.highest_price}

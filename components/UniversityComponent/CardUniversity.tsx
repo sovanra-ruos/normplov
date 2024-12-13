@@ -22,7 +22,7 @@ export default function CardUniversity({
   return (
 
       <div>
-        <a className={`flex lg:p-6 md:p-6 p-2 h-50 w-full flex-row items-center bg-white border border-gray-100 shadow-sm rounded-2xl  md:flex-row hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 `} onClick={onClick}>
+        <div className={`flex lg:p-6 md:p-6 p-2 h-50 w-full flex-row items-center bg-white border border-gray-100 shadow-sm rounded-2xl  md:flex-row hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 `} onClick={onClick}>
           <Image
             className="object-cover lg:w-40 lg:h-40 md:w-40 md:h-40 w-24 h-24 mr-2 rounded-t-lg md:rounded-none md:rounded-s-lg"
             src={`http://136.228.158.126:3300/${logo_url}`}
@@ -67,7 +67,7 @@ export default function CardUniversity({
               </div>
             </div>
           </div>
-        </a>
+        </div>
       </div>
   );
 }

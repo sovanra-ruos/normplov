@@ -114,10 +114,11 @@ export default function CardUniversityDetail({
       <header className="relative">
         <div className="lg:w-full lg:h-[300px] md:w-full md:h-[200px] w-full h-[100px] overflow-hidden">
           <Image
-            src={`http://136.228.158.126:3300/${logo_url}`}
-            alt="ISTAD Students"
+            src={`http://136.228.158.126:3300/${cover_image}`}
+            alt={kh_name}
             width={200}
             height={200}
+            unoptimized // This disables Next.js image optimization (optional if needed)
             className="w-full h-full object-cover"
           />
         </div>
@@ -125,10 +126,11 @@ export default function CardUniversityDetail({
         <div className="hidden md:block lg:block  container mx-auto px-4  relative lg:-mt-12 md:-mt-12 -mt-6">
           <div className="bg-white  bg-opacity-30 lg:w-auto lg:h-[290px] md:w-auto md:h-[230px] w-auto h-[200px] backdrop-blur-lg border rounded-xl lg:p-6 md:p-6 p-3 shadow-sm flex  flex-row md:flex-row items-center lg:gap-6 md:gap-6 gap-2">
             <Image
-              src={`http://136.228.158.126:3300/${cover_image}`}
+              src={`http://136.228.158.126:3300/${logo_url}`}
               alt="ISTAD Logo"
               width={200}
               height={200}
+              unoptimized // This disables Next.js image optimization (optional if needed)
               className="lg:w-60 lg:h-60 md:w-32 md:h-32 w-10 h-10 rounded-full lg:border-4 md:border-3 border border-primary"
             />
             <div className="text-center md:text-left">
@@ -157,6 +159,7 @@ export default function CardUniversityDetail({
                 alt="ISTAD Logo"
                 width={200}
                 height={200}
+                unoptimized // This disables Next.js image optimization (optional if needed)
                 className="lg:w-60 lg:h-60 md:w-32 md:h-32 w-14 h-14 rounded-full lg:border-4 md:border-3 border border-primary"
               />
               <div className="text-center md:text-left">

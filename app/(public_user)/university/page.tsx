@@ -19,7 +19,7 @@ type UniversityType = {
   location: string;
   province_name: string;
   popular_major: string;
-  logo_url: string;
+  logo_url: string | null;  // Handle null value
 };
 
 export default function Page() {
@@ -108,7 +108,7 @@ export default function Page() {
                   en_name={university.en_name}
                   location={university.location}
                   popular_major={university.popular_major}
-                  logo_url={university.logo_url}
+                  logo_url={university.logo_url || "/assests/default.png" }
                   onClick={() => handleCardClick(university.uuid)}
                 />
               ))
