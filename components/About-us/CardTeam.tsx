@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Mail, Zap, Check } from 'lucide-react'
-import Image from 'next/image'
+
 
 export default function CardTeam() {
     const [isVisible, setIsVisible] = useState(false)
