@@ -1,7 +1,6 @@
-'use client'
-import React, { useState } from 'react';
+'use client';
+import React, { useState, ReactNode } from 'react';
 import { Field, useFormikContext } from 'formik';
-import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from '@radix-ui/react-select';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
@@ -11,26 +10,50 @@ type Option = {
 };
 
 type FieldProps = {
-  type: string; // Type of the field (e.g., "text", "date", "select", etc.)
+  type: string; // Type of the field (e.g., "text", "date", "select", "textarea", etc.)
   name: string; // Formik field name
   id: string; // Field ID
   placeholder?: string; // Placeholder for text inputs
   options?: Option[]; // Options for dropdown fields
+  className?: string; // Additional CSS classes for styling
+  icon?: ReactNode; // Optional icon component
 };
 
-const FieldProfile = ({ type, name, id, placeholder, options }: FieldProps) => {
+const FieldProfile = ({ type, name, id, placeholder, options, className, icon }: FieldProps) => {
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
   const { setFieldValue } = useFormikContext(); // Formik hook to set field value
+
+  const fieldWrapperClasses = `relative flex items-center ${className}`;
 
   if (type === 'date') {
     // Render DatePicker for type "date"
     return (
-      <div className="relative">
+      <div className={fieldWrapperClasses}>
         <DatePicker
           selected={selectedDate}
-          onChange={(date) => setSelectedDate(date)}
-          placeholderText={placeholder || 'Select a date'}
-          className="mt-1 block w-full px-3 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary text-textprimary"
+          onChange={(date) => {
+            setSelectedDate(date);
+            setFieldValue(name, date); // Update Formik value for date
+          }}
+          placeholderText={placeholder || 'Pick a date'}
+          className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary text-textprimary placeholder-gray-500"
+        />
+        {icon && <div className="absolute right-3 text-gray-400">{icon}</div>}
+      </div>
+    );
+  }
+
+  if (type === 'textarea') {
+    // Render Textarea for type "textarea"
+    return (
+      <div className={fieldWrapperClasses}>
+        <Field
+          as="textarea"
+          name={name}
+          id={id}
+          placeholder={placeholder}
+          rows={4} // Adjust number of rows as needed
+          className="mt-1 block w-full px-4 py-3 border border-slate-100 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary text-textprimary resize-none"
         />
       </div>
     );
@@ -39,40 +62,40 @@ const FieldProfile = ({ type, name, id, placeholder, options }: FieldProps) => {
   if (type === 'select' && options) {
     // Render Select Dropdown for type "select"
     return (
-      <Select
-        onValueChange={(value) => {
-          setFieldValue(name, value); // Update Formik's value for the select field
-        }}
-      >
-        <SelectTrigger className="mt-1 block w-full px-3 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary text-textprimary">
-          <SelectValue placeholder={placeholder || 'Select an option'} />
-        </SelectTrigger>
-        <SelectContent className="bg-white border border-gray-200 rounded-md shadow-md p-2">
-          {options.map((option) => (
-            <SelectItem
-              key={option.value}
-              value={option.value.toString()}
-              className="px-3 py-2 rounded-md hover:bg-gray-100 cursor-pointer"
-            >
+      <div className={fieldWrapperClasses}>
+        <select
+          name={name}
+          id={id}
+          onChange={(e) => setFieldValue(name, e.target.value)} // Update Formik value for the select field
+          className="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary text-textprimary"
+        >
+          <option value="" disabled selected>
+            {placeholder || 'Select an option'}
+          </option>
+          {options?.map((option) => (
+            <option key={option.value} value={option.value}>
               {option.label}
-            </SelectItem>
+            </option>
           ))}
-        </SelectContent>
-      </Select>
+        </select>
+        {icon && <div className="absolute right-3 text-gray-400">{icon}</div>}
+      </div>
     );
   }
 
   // Default Input Field
   return (
-    <Field
-      type={type}
-      name={name}
-      id={id}
-      placeholder={placeholder}
-      className="mt-1 block w-full px-3 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary text-textprimary"
-    />
+    <div className={fieldWrapperClasses}>
+      <Field
+        type={type}
+        name={name}
+        id={id}
+        placeholder={placeholder}
+        className="mt-1 block w-full px-4 py-3 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary text-textprimary"
+      />
+      {icon && <div className="absolute right-3 text-gray-400">{icon}</div>}
+    </div>
   );
 };
 
 export default FieldProfile;
-

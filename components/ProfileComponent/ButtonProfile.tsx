@@ -22,7 +22,7 @@ const ButtonProfile = ({
   return (
     <button
       onClick={onClick}
-      className={`w-full flex items-center gap-4 p-4 rounded-lg cursor-pointer ${
+      className={`w-full flex items-center gap-4 p-4 rounded-xl cursor-pointer ${
         isActive ? 'bg-[#F3FBF9]' : backgroundColor
       } hover:bg-[#F3FBF9] transition`}
     >

@@ -28,5 +28,5 @@ export function middleware(request: NextRequest) {
 
 // Optional: Add matchers to specify which routes the middleware applies to
 export const config = {
-    matcher: ["/test"], // Example routes
+    matcher: ["/test","/profile-about-user","/profile-quiz-history","/profile-draft"] // Example routes
 };
