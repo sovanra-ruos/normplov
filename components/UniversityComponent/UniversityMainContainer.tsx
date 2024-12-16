@@ -1,10 +1,10 @@
 "use client";
 import { FaSearch } from "react-icons/fa";
 import Select from "react-select";
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useAppDispatch } from "@/redux/hooks";
-import { setProvince, setSearch } from "@/redux/feature/filter/filterSlice";
-import { useGetUniversitiesQuery } from "@/redux/api";
+import { setProvince } from "@/redux/feature/filter/filterSlice";
+
 import SliderUniversity from "./SliderUniversity";
 
 // Define types for dropdown options
@@ -13,16 +13,7 @@ type OptionType = {
   label: string;
 };
 
-type SchoolType = {
-  uuid: string;
-  kh_name: string;
-  en_name: string;
-  location: string;
-  province_name: string;
-  popular_major: string;
-  logo_url: string | null;
-  type: string;
-};
+
 type Props = {
   selectedUniversity: OptionType | null;
   setSelectedUniversity: (value: OptionType | null) => void; // dispatch function
@@ -81,13 +72,7 @@ export default function UniversityMainContainer({
     { value: "4d3027ae-d944-4934-873f-3e4699b60fb5", label: "ត្បូងឃ្មុំ" },
   ];
 
-  // Fetch data using useGetUniversitiesQuery
-  const { data, error, isLoading } = useGetUniversitiesQuery({
-    search,
-    province_uuid: selectedLocation?.value || "",
-    type: selectedUniversity?.value || "",
-    page: 1,
-  });
+
 
   // Handle search input change
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {

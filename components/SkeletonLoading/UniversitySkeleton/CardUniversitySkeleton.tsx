@@ -3,7 +3,7 @@ import React from "react";
 export default function CardUniversitySkeleton() {
   return (
     <div className=" mx-auto my-4 md:my-6 lg:mt-10 md:mt-10 mt-4  grid w-auto auto-rows-fr grid-cols-1 lg:gap-8 md:gap-8 gap-3 sm:mt-12 lg:grid-cols-2 md:grid-cols-1">
-         {[...new Array(8)].map((pr, ifier) => (
+         {[...new Array(8)].map((pr) => (
       <div
         key={pr}
         className={`flex  bg-slate-50 lg:p-6 md:p-6 p-2 lg:h-48 md:h-48 h-32 w-full flex-row items-center  border border-gray-100 shadow-sm rounded-2xl  md:flex-row  dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 `}

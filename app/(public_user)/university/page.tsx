@@ -1,10 +1,10 @@
 "use client";
 import CardUniversity from "@/components/UniversityComponent/CardUniversity";
 import UniversityMainContainer from "@/components/UniversityComponent/UniversityMainContainer";
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useRouter } from "next/navigation";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
-import { useGetUniversitiesQuery } from "@/redux/api";
+
 import {
   setPage,
   setProvince,
@@ -13,6 +13,7 @@ import {
 } from "@/redux/feature/filter/filterSlice";
 import UniversitySkeleton from "@/components/SkeletonLoading/UniversitySkeleton/UniversitySkeleton";
 import Image from "next/image";
+import { useGetUniversitiesQuery } from "@/redux/service/university";
 
 type OptionType = {
   value: string;
@@ -31,6 +32,7 @@ type UniversityType = {
 };
 
 export default function Page() {
+  const router = useRouter();
   const dispatch = useAppDispatch();
   const { search, province_uuid, page, selectedUniversity } = useAppSelector(
     (state) => state.filter
@@ -98,7 +100,7 @@ export default function Page() {
     return <div>Error: {error.message || "Something went wrong"}</div>;
   }
 
-  const router = useRouter();
+
   const handleCardClick = (id: string) => {
     router.push(`/university/${id}`);
   };

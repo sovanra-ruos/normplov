@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Image from 'next/image';
 
 export default function SliderUniversity() {
   // State to track active slide index
@@ -34,8 +35,10 @@ export default function SliderUniversity() {
             }`}
             data-carousel-item
           >
-            <img
+            <Image
               src={image}
+              width={200}
+              height={200}
               className="absolute block w-full lg:w-full md:w-full lg:h-full md:h-[460px] h-[300px] -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
               alt={`carousel image ${index + 1}`}
             />
