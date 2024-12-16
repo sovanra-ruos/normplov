@@ -24,16 +24,23 @@ import { configureStore } from '@reduxjs/toolkit';
 import { normPlovApi } from './api';
 import authSlice from './feature/auth/authSlice';
 import verifySlice from './feature/verify/verifySlice';
+import filterSlice from './feature/filter/filterSlice';
+import { universityApi } from './api';
+
 
 export const makeStore = () => {
   return configureStore({
     reducer: {
       [normPlovApi.reducerPath]: normPlovApi.reducer,
+      [universityApi.reducerPath]: universityApi.reducer,
       auth:authSlice,
       verify: verifySlice,
+      filter: filterSlice,
     },
     middleware: (getDefaultMiddleware) =>
-      getDefaultMiddleware().concat(normPlovApi.middleware),
+      getDefaultMiddleware()
+    .concat(normPlovApi.middleware)
+    .concat(universityApi.middleware)
   });
 };
 

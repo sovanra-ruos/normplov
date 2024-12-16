@@ -193,7 +193,7 @@ export default function page() {
         <ProcessHomePage />
       </section>
       {/* Feedback Section */}
-      <section>{/* <FeedbackHomePage/> */}</section>
+      <section>{ /* <FeedbackHomePage/> */} </section>
     </div>
   );
 }

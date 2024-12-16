@@ -1,4 +1,10 @@
-import { createApi, fetchBaseQuery, FetchBaseQueryError, QueryReturnValue, BaseQueryApi } from "@reduxjs/toolkit/query/react";
+import {
+  createApi,
+  fetchBaseQuery,
+  FetchBaseQueryError,
+  QueryReturnValue,
+  BaseQueryApi,
+} from "@reduxjs/toolkit/query/react";
 import { RootState } from "./store";
 import { setAccessToken } from "./feature/auth/authSlice";
 
@@ -16,21 +22,22 @@ type BaseQueryOptions = Record<string, unknown>; // Object with unknown properti
 const baseQuery = fetchBaseQuery({
   baseUrl: process.env.NEXT_PUBLIC_NORMPLOV_API_URL,
   prepareHeaders: (headers, { getState }) => {
-    const token = (getState() as RootState).auth.token
+    const token = (getState() as RootState).auth.token;
     console.log("Token retrieved for API call:", token); // Debugging
     if (token) {
       headers.set("Authorization", `Bearer ${token}`);
     }
 
     return headers;
-    
   },
-  
 });
 
-
 // Adjusting the type for return value of `baseQueryWithReAuth`
-type BaseQueryReturnType = QueryReturnValue<unknown, FetchBaseQueryError, Record<string, unknown>>;
+type BaseQueryReturnType = QueryReturnValue<
+  unknown,
+  FetchBaseQueryError,
+  Record<string, unknown>
+>;
 
 // baseQueryWithReAuth with the proper type
 const baseQueryWithReAuth = async (
@@ -63,7 +70,6 @@ const baseQueryWithReAuth = async (
       console.error("Token refresh failed.");
     }
   }
-  
 
   return result;
 };
@@ -75,3 +81,38 @@ export const normPlovApi = createApi({
   baseQuery: baseQueryWithReAuth, // Use the custom base query with re-authentication logic
   endpoints: () => ({}),
 });
+
+
+
+// kimla Pro
+
+// Create the API slice with redux-toolkit's createApi
+export const universityApi = createApi({
+  reducerPath: "universityApi",
+  baseQuery: fetchBaseQuery({
+    baseUrl: process.env.NEXT_PUBLIC_NORMPLOV_API_URL,
+  }),
+  endpoints: (builder) => ({
+    // Fetch universities with optional search and filter parameters
+    getUniversities: builder.query({
+      query: (filters: {
+        search?: string;
+        province_uuid?: string;
+        type?:string;
+        page?: number;
+      }) => {
+        // Construct query parameters for search and filter
+        const query = new URLSearchParams();
+        if (filters.search) query.append("search", filters.search);
+        if (filters.province_uuid) query.append("province_uuid", filters.province_uuid);
+        if (filters.type) query.append('type', filters.type);
+        if (filters.page) query.append("page", filters.page.toString());
+
+        return {
+          url: `api/v1/schools?${query.toString()}`,
+        };
+      },
+    }),
+  }),
+});
+export const { useGetUniversitiesQuery } = universityApi;

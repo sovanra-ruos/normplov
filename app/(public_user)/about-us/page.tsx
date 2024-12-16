@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function AboutUs() {
   return (
@@ -14,9 +15,11 @@ export default function AboutUs() {
             យើងបំពេញបេសកកម្មនេះតាមរយៈការធ្វើតេស្តជំនាញ មុខរបរ
             ការចូលរួមក្នុងសកម្មភាព និងការចែករំលែកចំណេះដឹងពីវិស័យនានា។
           </p>
-          <button className="bg-emerald-500 text-white px-6 py-2 md:px-8 md:py-3 lg:px-8 lg:py-3 rounded-xl text-md md:text-lg lg:text-lg hover:bg-emerald-600 transition-colors">
+          <div className="py-4">
+          <Link href="/test" className="bg-emerald-500  text-white px-6 py-2 md:px-8 md:py-2 lg:px-8 lg:py-2 rounded-xl text-md md:text-lg lg:text-lg hover:bg-emerald-600 transition-colors">
             ចាប់ផ្តើម
-          </button>
+          </Link>
+          </div>
         </div>
         <div className="flex  justify-center items-start w-full h-[700px]  py-10">
           <div>
@@ -98,10 +101,10 @@ export default function AboutUs() {
         <div className="flex space-x-[200px] max-w-7xl mx-auto my-4 md:my-6  ">
         <div className=" ">
             <Image
-              src="/assets/cher-pheng.png"
+              src="/assets/cher_Leang.png"
               width={200}
               height={200}
-              className=" w-[350px] h-[320px]  "
+              className=" w-[390px] h-[320px]  "
               alt=""
             />
             <div className="flex justify-center text-textprimary text-2xl mt-[20px]">
@@ -148,11 +151,11 @@ export default function AboutUs() {
             </div>
           </div>
           <div className=" ">
-            <Image
-              src="/assets/cher-pheng.png"
+          <Image
+              src="/assets/cher_Leang.png"
               width={200}
               height={200}
-              className=" w-[350px] h-[320px]  "
+              className=" w-[390px] h-[320px]  "
               alt=""
             />
             <div className="flex justify-center text-textprimary text-2xl mt-[20px]">
