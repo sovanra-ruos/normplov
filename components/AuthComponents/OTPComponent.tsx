@@ -1,6 +1,3 @@
-
-
-
 'use client';
 import React, { useState, useEffect } from "react";
 import OTPValidation from "@/components/AuthComponents/OTPValidation";
@@ -111,20 +108,21 @@ function OTPComponent() {
             </button>
           </div>
           <div className="h-fit w-fit pt-9 pb-5">
-            <h1 className="text-4xl font-bold text-primary">Verify Code1</h1>
+            <h1 className="text-4xl font-bold text-primary">ផ្ទៀងផ្ទាត់លេខកូដសម្ងាត់</h1>
             <p className="pt-4 text-slate-500">
-              We sent a verification code to your email! You can resend after 
-              <span className="font-bold">{` ${timer}s`}</span>.
+            យើងបានផ្ញើលេខកូដ 6 ខ្ទង់ទៅកាន់អ៊ីមែលរបស់អ្នក។​ អ្នកមានពេល <span className="font-bold text-primary">{` ${timer}s`}</span> វិនាទី
+             
             </p>
             <div className="mt-6">
               <OTPValidation length={6} onComplete={handleOTPComplete} />
-              <div className="text-right mt-3">
-                <button
-                  className="text-sm text-primary hover:underline"
+              <div className="text-right mt-3 ">
+             
+               <button
+                  className="text-sm text-primary hover:underline font-bold"
                   onClick={handleResendCode}
                   disabled={resending}
                 >
-                  {resending ? "Resending..." : "Resend Code"}
+                  {resending ? "កំពុងផ្ញើរលេខសម្ងាត់ទៅអ្នក..." : "ផ្ញើរលេខកូដសម្ងាត់ម្តងទៀត"}
                 </button>
               </div>
             </div>
@@ -133,7 +131,7 @@ function OTPComponent() {
             <div className="mt-6">
               <Button
                 type="submit"
-                text="Verify"
+                text="ផ្ទៀងផ្ទាត់"
                 onClick={handleSubmit}
                 isLoading={isLoading}
                 className="w-full bg-primary hover:bg-primary text-white font-medium border-collapse"

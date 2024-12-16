@@ -12,6 +12,8 @@ import { useRouter } from "next/navigation";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import {useAppSelector } from '@/redux/hooks';
+import Image from 'next/image';
+import Link from 'next/link';
 
 type ValueTypes = {
     new_password: string;
@@ -25,12 +27,12 @@ const initialValues: ValueTypes = {
 const strongPasswordRegex = new RegExp("^(?=.*[A-Z])(?=.*[a-z])(?=.*[@#$%^&*]).{8,}$");
 const validationSchema = Yup.object().shape({
     new_password: Yup.string()
-     .min(8, "New Password is too short, At lease 8 characters")
-    .matches(strongPasswordRegex, "New Password must contain at least one upper case English letter, one lower case English letter and one special character")
-    .required("New Password is required"),
+     .min(8, "ពាក្យសម្ងាត់ថ្មីគឺខ្លីពេក, សូមបញ្ជូលអោយបាន 8 តួរ")
+    .matches(strongPasswordRegex, "ពាក្យសម្ងាត់របស់អ្នកត្រូវតែមានអក្សរធំ អក្សរតូច និង​និមិត្តសញ្ញាពិសេស")
+    .required("ពាក្យសម្ងាត់ថ្មីត្រូវតែបញ្ជូល"),
     confirm_password: Yup.string()
-    .oneOf([Yup.ref("new_password")], "New Password must match")
-    .required("Confirm password is required"),
+    .oneOf([Yup.ref("new_password")], "ពាក្យសម្ងាត់ថ្មីត្រូវតែដូចជាមួយការបញ្ជាក់ពាក្យសម្ងាត់")
+    .required("អ្នកត្រូវបញ្ជូលបញ្ជាក់ពាក្យសម្ងាត់របស់អ្នក"),
 });
 
 const ResetPasswordComponent = () => {
@@ -89,15 +91,20 @@ const ResetPasswordComponent = () => {
         <div className='w-[90%] h-[90%] sm:w-[75%] sm:h-[90%] md:w-[95%] md:h-[90%] xl:w-[85%] xl:h-[68%] m-auto border-1 border border-slate-100 rounded-xl'>
             <div className="px-6 sm:px-8 md:px-6 xl:px-10">
                 {/* <div className='flex justify-end mt-3'> */}
-                <div className="right-9 top-5 sm:right-24 sm:top-5 md:right-5 md:top-3 lg:right-5 xl:right-20 absolute xl:top-32">
-                    <button
-                    className="text-2xl text-gray-500 hover:text-gray-700"
-                    onClick={() => console.log('Close button clicked')}
-                    >
-                        <IoCloseSharp />
-                    </button>
-                </div>
-                <div className="h-fit mt-10 md:mt-11 xl:mt-24">
+                <div className="flex justify-between items-center ">
+            <Link href="/">
+              <Image src="/assets/logo-test.png" width={24} height={24} alt="Logo Image" />
+            </Link>
+            <div>
+              <button
+                className="text-2xl text-gray-500 hover:text-gray-700"
+                onClick={() => console.log('Close button clicked')}
+              >
+                <IoCloseSharp />
+              </button>
+            </div>
+          </div>
+                <div className="h-fit mt-10 md:mt-11 xl:mt-10">
                     <h1 className="text-4xl font-bold text-primary">បង្កើតពាក្យសម្ងាត់ថ្មី</h1>
                     <Formik
                         initialValues={initialValues}
@@ -114,11 +121,11 @@ const ResetPasswordComponent = () => {
                             <div className="space-y-6 mt-10">
                                 {/* Password Field */}
                                 <div>
-                                    <Label htmlFor="new_password" text="New Password" required />
+                                    <Label htmlFor="new_password" text="ពាក្យសម្ងាត់ថ្មី" required />
                                     <PasswordField
                                         name="new_password"
                                         id="new_password"
-                                        placeholder="Input New Password"
+                                        placeholder="បញ្ចូលពាក្យសម្ងាត់ថ្មី"
                                         className="custom-class mt-1"
                                     />
                                     <ErrorDynamic  name="new_password" component="div" />
@@ -126,11 +133,11 @@ const ResetPasswordComponent = () => {
 
                                 {/* Confirm Password Field */}
                                 <div>
-                                    <Label htmlFor="confirm_password" text="Confirm Password" required />
+                                    <Label htmlFor="confirm_password" text="បញ្ជាក់ពាក្យសម្ងាត់ថ្មី" required />
                                     <PasswordField
                                         name="confirm_password"
                                         id="confirm_password"
-                                        placeholder="Input Confirm Password"
+                                        placeholder="បញ្ចូលបញ្ជាក់ពាក្យសម្ងាត់ថ្មី"
                                         className="custom-class mt-1"
                                     />
                                     <ErrorDynamic  name="confirm_password" component="div" />
@@ -142,7 +149,7 @@ const ResetPasswordComponent = () => {
                             <div className="mt-8">
                                 <Button
                                     type="submit"
-                                    text="Chnage Password"
+                                    text="រួចរាល់"
                                     isLoading={isLoading}
                                     className="w-full bg-primary hover:bg-primary text-white font-medium border-collapse"
                                 />

@@ -31,7 +31,7 @@ export const authApi = normPlovApi.injectEndpoints({
     // register user
     register: builder.mutation<RegisterResponse, RegisterRequest>({
       query: ({ data }) => ({
-        url: `auth/register`,
+        url: `api/v1/auth/register`,
         method: "POST",
         body: data,
       }),
@@ -40,7 +40,7 @@ export const authApi = normPlovApi.injectEndpoints({
     // VerifyCode For Register
     VerifyCodeRegister: builder.mutation<VerifyCodeRegisterResponse, VerifyCodeRegisterRequest>({
       query: ({ email, verification_code }) => ({
-        url: `auth/verify`,
+        url: `api/v1/auth/verify`,
         method: "POST",
         body: { email, verification_code },
       }),
@@ -49,7 +49,7 @@ export const authApi = normPlovApi.injectEndpoints({
     // Resend VerifyCode for Register
     ResendVerifyCodeRegister: builder.mutation<ResendVerifyCodeRegisterResponse, ResendVerifyCodeRegisterRequest>({
       query: ({ email }) => ({
-        url: `auth/resend-verification-code`,
+        url: `api/v1/auth/resend-verification-code`,
         method: "POST",
         body: { email },
       }),
@@ -58,7 +58,7 @@ export const authApi = normPlovApi.injectEndpoints({
     // forgot password
     forgotPassword: builder.mutation<ForgotPasswordResponse, ForgotPasswordRequest>({
       query: ({ email }) => ({
-        url: `auth/password-reset-request`,
+        url: `api/v1/auth/password-reset-request`,
         method: "POST",
         body: { email }, // Wrap email in an object
       }),
@@ -67,24 +67,15 @@ export const authApi = normPlovApi.injectEndpoints({
     //verify code for reset password (forgot password)
     VerifyCodeResetPassword: builder.mutation<VerifyCodeResetPasswordResponse, VerifyCodeResetPasswordRequest>({
       query: ({ email, reset_code }) => ({
-        url: `auth/verify-reset-password`,
+        url: `api/v1/auth/verify-reset-password`,
         method: "POST",
         body: { email, reset_code },
       }),
     }),
-    //resend code for reset password
-    // ResendCodeResetPassword: builder.mutation<ResendVerifyCodeResetPasswordResponse, ResendCodeResetPasswordRequest >({
-    //   query: ({ email }) => ({
-    //     url: `auth/resend-reset-password`,
-    //     method: "POST",
-    //     body: { email },
-    //   }),
-    // }),
-
       //resend code for reset password
     ResendCodeResetPassword: builder.mutation<ResendCodeResetPasswordResponse, ResendCodeResetPasswordRequest >({
       query: ({ email }) => ({
-        url: `auth/resend-reset-password`,
+        url: `api/v1/auth/resend-reset-password`,
         method: "POST",
         body: { email },
       }),
@@ -94,7 +85,7 @@ export const authApi = normPlovApi.injectEndpoints({
     // reset password
     resetPassword: builder.mutation<ResetPasswordResponse, ResetPasswordRequest>({
       query: ({ email, reset_code, new_password, confirm_password }) => ({
-        url: `auth/reset-password`,
+        url: `api/v1/auth/reset-password`,
         method: "POST",
         body: { email,reset_code, new_password, confirm_password },
       }),

@@ -27,10 +27,10 @@ const initialValues: ValueTypes = {
 };
 
 const validationSchema = Yup.object().shape({
-  email: Yup.string().email('Invalid Email').required('Required to input your email.'),
+  email: Yup.string().email('អ៉ីម៉ែលរបស់អ្នកមិនត្រឹមត្រូវ').required('អ្នកត្រូវបញ្ជូលអ៉ីម៉ែលរបស់អ្នក'),
   password: Yup.string()
-    .min(8, 'Short Password, 8 characters required')
-    .required('Required to input your password'),
+    .min(8, 'ពាក្យសម្ងាត់របស់អ្នកខ្លីពេក, សូមបញ្ជូលពាក្យសម្ងាត់ 8 តួរ')
+    .required('អ្នកត្រូវបញ្ជូលពាក្យសម្ងាត់របស់អ្នក'),
 });
 
 
@@ -45,7 +45,7 @@ const LoginComponent = () => {
     const {email, password} = user
     setIsLoading(true); // Set loading state to true
     try{
-      const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL_LOCALHOST}login`,{
+      const response = await fetch(`/api/login`,{
         method: 'POST',
         headers:{
           "content-type": "application/json",
@@ -110,7 +110,7 @@ const LoginComponent = () => {
           </div>
             
         <div className="mt-20">
-          <h1 className="text-4xl font-bold text-primary">Login</h1>
+          <h1 className="text-4xl font-bold text-primary">ចូលគណនី</h1>
           <Formik
             initialValues={initialValues}
             validationSchema={validationSchema}
@@ -125,23 +125,23 @@ const LoginComponent = () => {
                 <div className="space-y-4 mt-5">
                   {/* Email Field */}
                   <div>
-                    <Label htmlFor="email" text="Email" required />
+                    <Label htmlFor="email" text="អ៉ីម៉ែល" required />
                     <DynamicField
                       type="text"
                       name="email"
                       id="email"
-                      placeholder="Input Your Email "
+                      placeholder="បញ្ចូលអ៉ីម៉ែលរបស់អ្នក"
                     />
                     <ErrorDynamic name="email" component="div" />
                   </div>
 
                   {/* Password Field */}
                   <div>
-                    <Label htmlFor="password" text="Password" required />
+                    <Label htmlFor="password" text="ពាក្យសម្ងាត់" required />
                     <PasswordField
                       name="password"
                       id="password"
-                      placeholder="Input Your Password"
+                      placeholder="បញ្ចូលពាក្យសម្ងាត់របស់អ្នក"
                       className="custom-class mt-1"
                     />
                     <ErrorDynamic name="password" component="div" />
@@ -152,7 +152,7 @@ const LoginComponent = () => {
                 <div className="mt-2 text-right">
                   <Link href="/forgot-password">
                     <span className="text-sm text-primary hover:underline hover:font-semibold ">
-                      Forgot Password?
+                    ភេ្លចលេខសម្ងាត់?
                     </span>
                   </Link>
                 </div>
@@ -161,7 +161,7 @@ const LoginComponent = () => {
                 <div className="mt-6">
                   <Button
                     type="submit"
-                    text="Login"
+                    text="ចូលគណនី"
                     isLoading={isLoading} // Show loading spinner when the form is submitting
                     className="w-full bg-primary hover:bg-primary text-white font-medium border-collapse"
                   />
@@ -177,7 +177,7 @@ const LoginComponent = () => {
                     <Button
                    
                     type="button"
-                    text="Continue with Google"  
+                    text="ភ្ជាប់ជាមួយ Google"  
                     onClick={() => signIn('google')}
                     icon={
                     <Image
@@ -191,7 +191,7 @@ const LoginComponent = () => {
                 </div>
                 {/* Don't have accoun? Register */}
                 <div className='mt-4 text-center text-textprimary '>
-                    <span>Dont&apos;t have account yet?<Link href="/register" className='text-primary hover:underline hover:font-semibold pl-1.5'>Register</Link></span>
+                    <span>មិនទាន់មានគណនីមែនទេ? <Link href="/register" className='text-primary hover:underline hover:font-semibold pl-1.5'>បង្កើតគណនី</Link></span>
                 </div>
               </Form>
               

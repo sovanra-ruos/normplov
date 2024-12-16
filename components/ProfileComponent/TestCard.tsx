@@ -11,24 +11,29 @@
 
 // type TestCardProps = {
 //   title: string;
-//   description: string;
+//   assessment_type_name: string;
 //   date: string;
 //   actions: Action[];
+//   backgroundColor: string; // Add a dynamic background color prop
 // };
 
-// const DynamicTestCard = ({ title, description, date, actions }: TestCardProps) => {
+// const DynamicTestCard = ({ title, assessment_type_name, date, actions, backgroundColor }: TestCardProps) => {
 //   const [isDropdownOpen, setDropdownOpen] = useState(false);
 
 //   return (
-//     <div className="flex justify-between items-center p-4 bg-white rounded-lg ">
+//     <div className="flex justify-between items-center p-3 bg-white rounded-xl w-full">
 //       {/* Icon and Content */}
 //       <div className="flex items-center">
-//         <div className="flex justify-center items-center w-12 h-12 rounded-full bg-primary">
-//           <span className="text-white font-bold text-3xl"><MdOutlineQuiz /></span>
+//         <div
+//           className={`flex justify-center items-center w-11 h-11 rounded-full -mt-6 ${backgroundColor}`}
+//         >
+//           <span className="text-white font-bold text-2xl">
+//             <MdOutlineQuiz />
+//           </span>
 //         </div>
 //         <div className="ml-4">
-//           <h3 className="text-2xl font-bold text-primary">{title}</h3>
-//           <p className="text-md text-textprimary">{description}</p>
+//           <h3 className="text-xl font-bold text-primary">{title}</h3>
+//           <p className="text-md text-textprimary">{assessment_type_name}</p>
 //           <p className="text-sm text-gray-400">{date}</p>
 //         </div>
 //       </div>
@@ -36,14 +41,14 @@
 //       {/* Dropdown */}
 //       <div className="relative">
 //         <button
-//           className="p-2 rounded-full text-primary hover:bg-[#F3FBF9]"
+//           className="p-2 rounded-full  text-primary hover:bg-[#F3FBF9]"
 //           onClick={() => setDropdownOpen(!isDropdownOpen)}
 //         >
-//           <MoreHorizontal className="w-7 h-" />
+//           <MoreHorizontal className="w-7 h-7" />
 //         </button>
 
 //         {isDropdownOpen && (
-//           <div className="absolute right-0 mt-2 w-40 bg-white border border-gray-100 rounded-lg ">
+//           <div className="absolute right-0 mt-2 w-40 bg-white border border-gray-100 rounded-xl">
 //             {actions.map((action) => (
 //               <button
 //                 key={action.actionKey}
@@ -65,6 +70,82 @@
 
 // export default DynamicTestCard;
 
+// import React, { useState } from "react";
+// import { MoreHorizontal } from "lucide-react";
+// import { MdOutlineQuiz } from "react-icons/md";
+
+// type Action = {
+//   label: string;
+//   icon: JSX.Element;
+//   actionKey: string;
+//   onClick: () => void; // No need to pass title or uuid here, simplify action handler
+// };
+
+// type TestCardProps = {
+//   title: string;
+//   assessment_type_name: string;
+//   date: string;
+//   actions: Action[];
+//   backgroundColor: string; // Add a dynamic background color prop
+// };
+
+// const DynamicTestCard = ({
+//   title,
+//   assessment_type_name,
+//   date,
+//   actions,
+//   backgroundColor,
+// }: TestCardProps) => {
+//   const [isDropdownOpen, setDropdownOpen] = useState(false);
+
+//   return (
+//     <div className="flex justify-between items-center p-3 bg-white  rounded-xl w-full">
+//       {/* Icon and Content */}
+//       <div className="flex items-center">
+//         <div
+//           className={`flex justify-center items-center w-12 h-12 rounded-full ${backgroundColor}`}
+//         >
+//           <MdOutlineQuiz className="text-white text-2xl" />
+//         </div>
+//         <div className="ml-4">
+//           <h3 className="text-lg font-bold text-gray-800">{title}</h3>
+//           <p className="text-md text-gray-600">{assessment_type_name}</p>
+//           <p className="text-sm text-gray-400">{date}</p>
+//         </div>
+//       </div>
+
+//       {/* Dropdown Actions */}
+//       <div className="relative">
+//         <button
+//           className="p-2 rounded-full text-gray-700 hover:bg-gray-200"
+//           onClick={() => setDropdownOpen(!isDropdownOpen)}
+//         >
+//           <MoreHorizontal className="w-6 h-6" />
+//         </button>
+
+//         {/* Dropdown Menu */}
+//         {isDropdownOpen && (
+//           <div className="absolute right-0 mt-2 w-40 bg-white border border-gray-200 rounded-[10px]  z-10">
+//             {actions.map((action) => (
+//               <button
+//                 key={action.actionKey}
+//                 className="flex items-center gap-2 px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full"
+//                 onClick={() => {
+//                   action.onClick();
+//                   setDropdownOpen(false); // Close dropdown after action
+//                 }}
+//               >
+//                 {action.icon} {action.label}
+//               </button>
+//             ))}
+//           </div>
+//         )}
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default DynamicTestCard;
 
 import React, { useState } from "react";
 import { MoreHorizontal } from "lucide-react";
@@ -74,60 +155,62 @@ type Action = {
   label: string;
   icon: JSX.Element;
   actionKey: string;
-  onClick: (actionKey: string, title: string) => void;
+  onClick: () => void; // No need to pass title or uuid here, simplify action handler
 };
 
 type TestCardProps = {
   title: string;
-  description: string;
+  assessment_type_name: string;
   date: string;
   actions: Action[];
   backgroundColor: string; // Add a dynamic background color prop
 };
 
-const DynamicTestCard = ({ title, description, date, actions, backgroundColor }: TestCardProps) => {
+const DynamicTestCard = ({
+  title,
+  assessment_type_name,
+  date,
+  actions,
+  backgroundColor,
+}: TestCardProps) => {
   const [isDropdownOpen, setDropdownOpen] = useState(false);
 
   return (
-    <div className="flex justify-between items-center p-3 bg-white rounded-lg w-full">
+    <div className="flex justify-between items-center p-3 bg-white  rounded-xl w-full">
       {/* Icon and Content */}
-      <div className="flex items-center">
+      <div className="flex items-center ">
         <div
-          className={`flex justify-center items-center w-11 h-11 rounded-full -mt-6 ${backgroundColor}`}
+          className={`flex justify-center items-center w-12 h-12 rounded-full -mt-5 ${backgroundColor}`}
         >
-          <span className="text-white font-bold text-2xl">
-            <MdOutlineQuiz />
-          </span>
+          <MdOutlineQuiz className="text-white text-2xl" />
         </div>
         <div className="ml-4">
-          <h3 className="text-xl font-bold text-primary">{title}</h3>
-          <p className="text-md text-textprimary">{description}</p>
+          <h3 className="text-lg font-bold text-primary">{title}</h3>
+          <p className="text-md text-gray-600">{assessment_type_name}</p>
           <p className="text-sm text-gray-400">{date}</p>
         </div>
       </div>
 
-      {/* Dropdown */}
+      {/* Dropdown Actions */}
       <div className="relative">
         <button
-          className="p-2 rounded-full text-primary hover:bg-[#F3FBF9]"
+          className="p-2 rounded-full text-gray-500 hover:bg-green-100"
           onClick={() => setDropdownOpen(!isDropdownOpen)}
         >
-          <MoreHorizontal className="w-7 h-7" />
+          <MoreHorizontal className="w-6 h-6" />
         </button>
 
+        {/* Dropdown Menu */}
         {isDropdownOpen && (
-          <div className="absolute right-0 mt-2 w-40 bg-white border border-gray-100 rounded-lg shadow-lg">
+          <div className="absolute right-0 mt-2 w-40 bg-white border border-gray-200 rounded-[10px]  z-10">
             {actions.map((action) => (
-              <button
-                key={action.actionKey}
-                className="flex items-center gap-2 px-4 py-2 text-sm text-gray-700 hover:bg-[#F3FBF9] w-full"
-                onClick={() => {
-                  action.onClick(action.actionKey, title);
-                  setDropdownOpen(false); // Close dropdown after action
-                }}
-              >
-                {action.icon} {action.label}
-              </button>
+            <button
+            key={action.actionKey}
+            className="flex items-center gap-2 px-4 py-2 text-sm text-gray-700 hover:bg-green-100 w-full"
+            onClick={action.onClick}
+          >
+            {action.icon} {action.label}
+          </button>
             ))}
           </div>
         )}

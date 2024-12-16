@@ -13,6 +13,8 @@ import {ToastContainer, toast } from 'react-toastify';
 import { useRouter } from "next/navigation";
 import { useAppDispatch } from '@/redux/hooks';
 import { setEmail } from '@/redux/feature/verify/verifySlice';
+import Image from 'next/image'
+import Link from 'next/link';
 type ValueTypes = {
     email: string;
 };
@@ -22,7 +24,7 @@ const initialValues: ValueTypes = {
 };
 
 const validationSchema = Yup.object().shape({
-    email: Yup.string().email('Email Invalid.').required('Required to input email.'),
+    email: Yup.string().email('អ៉ីម៉ែលរបស់អ្នកមិនត្រឹមត្រូវ').required('អ្នកត្រូវបញ្ជូលអ៉ីម៉ែលរបស់អ្នក'),
 });
 
 const ForgotPasswordComponent = () => {
@@ -68,17 +70,27 @@ const ForgotPasswordComponent = () => {
         <div className='w-[90%] h-[55%]  sm:h-[60%] md:h-[60%] xl:w-[85%] xl:h-[58%] m-auto border-1 border border-slate-100 rounded-xl'>
         <div className="px-6 sm:px-8 md:px-6 xl:px-10">
             {/* Close Button - Left Aligned */}
-      <div className="flex justify-end pt-5 ml-3">
-        <button
-          className="text-2xl text-gray-500 hover:text-gray-700"
-          onClick={() => console.log('Close button clicked')}
-        >
-          <IoCloseSharp />
-        </button>
-      </div>
-        <div className=" h-fit mt-14 ">
-          <h1 className="text-4xl font-bold text-primary">Forgot Password</h1>
-          <p className='pt-3 text-slate-400'>Please Input Your Email !</p>
+            <div className=" flex justify-between items-center">
+             <Link href="/">
+             <Image
+                      src="/assets/logo-test.png"
+                      width={24} height={24}
+                        alt="Logo Image"
+                        className="mt-4"
+                      />
+             </Link>
+                <div className="">
+                <button
+                    className="text-2xl text-gray-500 hover:text-gray-700"
+                    onClick={() => console.log('Close button clicked')}
+                >
+                    <IoCloseSharp />
+                </button>
+                </div>
+          </div>
+        <div className=" h-fit mt-7 ">
+          <h1 className="text-4xl font-bold text-primary">ភ្លេចពាក្យសម្ងាត់</h1>
+          <p className='pt-3 text-slate-400'>សូមបញ្ចូលអ៉ីម៉ែល ដើម្បីទទួលបានលេខកូដផ្ទៀងផ្ទាត់</p>
           <Formik
             initialValues={initialValues}
             validationSchema={validationSchema}
@@ -93,12 +105,12 @@ const ForgotPasswordComponent = () => {
                 <div className="space-y-4 mt-8">
                   {/* Email Field */}
                   <div>
-                    <Label htmlFor="email" text="Email" required />
+                    <Label htmlFor="email" text="អ៉ីម៉ែល" required />
                     <DynamicField
                       type="text"
                       name="email"
                       id="email"
-                      placeholder="Input Your Email"
+                      placeholder="បញ្ចូលអ៉ីម៉ែលរបស់អ្នក"
                     />
                     <ErrorDynamic  name="email" component="div" />
                   </div>
@@ -110,7 +122,7 @@ const ForgotPasswordComponent = () => {
                 <div className="mt-6">
                   <Button
                     type="submit"
-                    text="Verify Email"
+                    text="ផ្ញើលេខសម្ងាត់"
                     isLoading={isLoading} // Show loading spinner when the form is submitting
                     className="w-full bg-primary hover:bg-primary text-white font-medium border-collapse"
                   />

@@ -35,16 +35,16 @@ const initialValues: ValueTypes = {
 
 const strongPasswordRegex = new RegExp("^(?=.*[A-Z])(?=.*[a-z])(?=.*[@#$%^&*]).{8,}$");
 const validationSchema = Yup.object().shape({
-  username: Yup.string().max(60, "Name is too long").required("Name is required"),
-  email: Yup.string().email('Invalid email').required('Email is required'),
+  username: Yup.string().max(60, "ឈ្មោះរបស់អ្នកវែងពេក too long").required("អ្នកត្រូវបញ្ជូលឈ្មោះរបស់អ្នក"),
+  email: Yup.string().email('អ៉ីម៉ែលរបស់អ្នកមិនត្រឹមត្រូវ').required('អ្នកត្រូវបញ្ជូលអ៉ីម៉ែលរបស់អ្នក'),
   password: Yup.string()
-    .min(8, "Password is too short, at least 8 characters")
-    .matches(strongPasswordRegex, "Password must contain at least one uppercase letter, one lowercase letter, and one special character")
-    .required("Password is required"),
+    .min(8, "ពាក្យសម្ងាត់ខ្លីពេក, ពាក្យសម្ងាត់យ៉ាងតិច 8 តួរ")
+    .matches(strongPasswordRegex, "ពាក្យសម្ងាត់របស់អ្នកត្រូវតែមានអក្សរធំ អក្សរតូច និង​និមិត្តសញ្ញាពិសេស")
+    .required("ពាក្យសម្ងាត់ត្រូវតែបញ្ជូល"),
   confirm_password: Yup.string()
-    .oneOf([Yup.ref("password")], "Passwords must match")
-    .required("Confirm password is required"),
-  terms: Yup.bool().oneOf([true], "You must accept the terms and conditions"), // Validation for terms
+    .oneOf([Yup.ref("password")], "ពាក្យសម្ងាត់ត្រូវតែដូចជាមួយការបញ្ជាក់ពាក្យសម្ងាត់")
+    .required("អ្នកត្រូវបញ្ជូលបញ្ជាក់ពាក្យសម្ងាត់របស់អ្នក"),
+  terms: Yup.bool().oneOf([true], "អ្នកត្រូវតែគោរពតាមគោលការណ៏"), // Validation for terms
 });
 
 const RegisterComponent = () => {
@@ -58,7 +58,7 @@ const RegisterComponent = () => {
     try {
       const { username, email, password, confirm_password } = values;
       const response = await register({ data: { username, email, password, confirm_password } }).unwrap();
-      console.log("Registration Response:", response);
+      // console.log("Registration Response:", response);
 
       // Dispatch email to Redux and show a success message
       dispatch(setEmail(email));
@@ -69,7 +69,7 @@ const RegisterComponent = () => {
         router.push("/verify-code-register");
       });
     } catch (error: unknown) {
-      console.error("Error during registration:", error);
+      // console.error("Error during registration:", error);
 
       // Handle API errors
       if (error && typeof error === 'object' && 'status' in error && 'data' in error) {
@@ -93,7 +93,7 @@ const RegisterComponent = () => {
     <section className="w-full h-screen flex justify-center items-center">
       <div className="w-[90%] h-[97%] sm:w-[75%] sm:h-[97%] md:w-[95%] md:h-[98%] xl:w-[85%] xl:h-[98%] m-auto">
         <div className="px-6 sm:px-8 md:px-6 xl:px-10">
-          <div className="flex justify-between items-center mt-3">
+          <div className="flex justify-between items-center ">
             <Link href="/">
               <Image src="/assets/logo-test.png" width={24} height={24} alt="Logo Image" />
             </Link>
@@ -106,8 +106,8 @@ const RegisterComponent = () => {
               </button>
             </div>
           </div>
-          <div className="h-fit mt-10 md:mt-11 xl:mt-8">
-            <h1 className="text-4xl font-bold text-primary">Register</h1>
+          <div className="h-fit mt-10 md:mt-11 xl:mt-0">
+            <h1 className="text-4xl font-bold text-primary">បង្កើតគណនីថ្មី</h1>
             <Formik
               initialValues={initialValues}
               validationSchema={validationSchema}
@@ -123,80 +123,82 @@ const RegisterComponent = () => {
             >
               {({ errors, touched }) => (
                 <Form>
-                  <div className="space-y-4 mt-3">
+                  <div className="space-y-3 mt-3">
                     <div>
-                      <Label htmlFor="username" text="Name" required />
+                      <Label htmlFor="username" text="ឈ្មោះ" required />
                       <DynamicField
                         type="text"
                         name="username"
                         id="username"
-                        placeholder="Input Your Username"
+                        placeholder="បញ្ចូលឈ្មោះរបស់អ្នក"
                       />
                       <ErrorDynamic name="username" component="div" />
                     </div>
                     <div>
-                      <Label htmlFor="email" text="Email" required />
+                      <Label htmlFor="email" text="អ៉ីម៉ែល" required />
                       <DynamicField
                         type="text"
                         name="email"
                         id="email"
-                        placeholder="Input Your Email"
+                        placeholder="បញ្ចូលអ៉ីម៉ែលរបស់អ្នក"
                       />
                       <ErrorDynamic name="email" component="div" />
                     </div>
                     <div>
-                      <Label htmlFor="password" text="Password" required />
+                      <Label htmlFor="password" text="ពាក្យសម្ងាត់" required />
                       <PasswordField
                         name="password"
                         id="password"
-                        placeholder="Input Your Password"
+                        placeholder="បញ្ចូលពាក្យសម្ងាត់របស់អ្នក"
                         className="custom-class mt-1"
                       />
                       <ErrorDynamic name="password" component="div" />
                     </div>
                     <div>
-                      <Label htmlFor="confirm_password" text="Confirm Password" required />
+                      <Label htmlFor="confirm_password" text="បញ្ជាក់ពាក្យសម្ងាត់" required />
                       <PasswordField
                         name="confirm_password"
                         id="confirm_password"
-                        placeholder="Input Your Confirm Password"
+                        placeholder="បញ្ជាក់ពាក្យសម្ងាត់របស់អ្នក"
                         className="custom-class mt-1"
                       />
                       <ErrorDynamic name="confirm_password" component="div" />
                     </div>
                   </div>
-                  <div className="flex items-center space-x-2 mt-3">
+                  <div className="flex items-center space-x-2 mt-4">
                     <Field type="checkbox" id="terms" name="terms" />
                     <label
                       htmlFor="terms"
                       className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-textprimary"
                     >
-                      Accept terms and conditions
+                     ខ្ញុំបានអាននិងយល់ព្រមលើ <Link href="/policy" className="text-primary pl-2"> គោលការណ៍ឯកជនភាព</Link>
                     </label>
-                    {errors.terms && touched.terms && (
-                      <div className="text-red-500 text-sm ">{errors.terms}</div>
-                    )}
+                    
                   </div>
+                  {errors.terms && touched.terms && (
+                      //  <ErrorDynamic name={errors.terms} component="div" />
+                      <div className="text-red-500 text-sm pt-1">{errors.terms}</div>
+                    )}
                   <div className="mt-6">
                     <Button
                       type="submit"
-                      text="Register"
+                      text="បង្កើតគណនី"
                       isLoading={isLoading}
                       className="w-full bg-primary hover:bg-primary text-white font-medium border-collapse"
                     />
                   </div>
                   
                              {/* OR Divider */}
-                             <div className="flex items-center justify-center space-x-4 my-4">
+                             <div className="flex items-center justify-center space-x-3 mt-3">
                                  <span className="w-1/2 border-b border-gray-300"></span>
-                                 <span className="text-sm text-gray-500">OR</span>
+                                 <span className="text-sm text-gray-500">ឬ</span>
                                  <span className="w-1/2 border-b border-gray-300"></span>
                             </div>
                             {/* Google Button */}
                             <div className="mt-4">
                                  <Button
                                     type="button"
-                                    text="Continue with Google"  
+                                    text="ភ្ជាប់ជាមួយ Google"  
                                     onClick={() => console.log('Continue with Google clicked')}
                                     icon={
                                         <Image
@@ -210,7 +212,7 @@ const RegisterComponent = () => {
                             </div>
                              {/* Don't have accoun? Register */}
                              <div className='mt-4 text-center text-textprimary '>
-                                 <span>Already have account?<Link href="/login" className='text-primary hover:underline hover:font-semibold pl-1.5'>Login</Link></span>
+                                 <span>មានគណនីរួចហើយ?<Link href="/login" className='text-primary hover:underline hover:font-semibold pl-1.5'>ចូលគណនី</Link></span>
                              </div>
                 </Form>
               )}

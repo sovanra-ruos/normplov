@@ -3,6 +3,8 @@ import type { Metadata } from "next";
 import "../globals.css";
 import { Inter, Suwannaphum } from "next/font/google";
 import SideBarProfileComponent from "@/components/ProfileComponent/SideBarProfileComponent";
+import NavbarPage from "@/components/Navbar/NavbarPage";
+import FooterPage from "@/components/Footer/FooterPage";
 const suwannaphum = Suwannaphum({
   subsets: ["khmer"],
   weight: ["400", "700"],
@@ -26,17 +28,19 @@ export default function ProfileLayout({
   return (
     <html lang="en">
       <body
-        className={`bg-[#F3FBF9] ${suwannaphum} ${inter} antialiased`}
+        className={` ${suwannaphum} ${inter} antialiased `}
       >
-        <div className="flex  w-full lg:flex-row h-screen  max-w-8xl mx-auto  m-0">
+        <NavbarPage/>
+        <div className="flex bg-[#F3FBF9]  h-auto w-full lg:flex-row max-w-8xl mx-auto  m-0">
           {/* Sidebar */}
-          <aside className="xl:w-1/4 xl:m-20 2xl:ml-11 lg:w-1/4 lg:m-20 ">
+          {/* <aside className="xl:w-96 xl:m-20 lg:w-1/4 lg:m-20"> */}
             <SideBarProfileComponent />
-          </aside>
+          {/* </aside> */}
 
           {/* Main Content */}
           <main className="xl:w-3/4 w-full py-8 px-8 lg:w-3/4">{children}</main>
         </div>
+        <FooterPage/>
       </body>
     </html>
   );

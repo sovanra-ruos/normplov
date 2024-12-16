@@ -24,7 +24,6 @@ export default function RootLayout({
           </StoreProvider>
         </SessionWrapper>
       </body>
-
     </html>
   );
 }

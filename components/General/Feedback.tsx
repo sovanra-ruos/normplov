@@ -38,24 +38,12 @@ export const Feedback = ({ title, desc, highlight, buttonTitle , placeholder}: p
                             {desc}
                         </p>
                     </div>
-
-
                     <Textarea className='bg-white border border-gray-200 pl-2 rounded-xl outline-none focus:border-gray-300 text-sm text-textprimary h-24 mb-4' placeholder={placeholder} />
-
-
-
                     <div className=' flex justify-end'>
                         <QuizButton title={buttonTitle} full={true} />
                     </div>
-
                 </div>
-
-
-
-
-
             </div>
-
         </div>
     )
 }

@@ -22,6 +22,15 @@ function OTPComponentReset() {
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
   const dispatch = useAppDispatch();
+  const [timer, setTimer] = useState(90); // Countdown timer
+
+  useEffect(() => {
+    let countdown: NodeJS.Timeout;
+    if (timer > 0) {
+      countdown = setTimeout(() => setTimer((prev) => prev - 1), 1000);
+    }
+    return () => clearTimeout(countdown);
+  }, [timer]);
 
   console.log("Email from Redux: ", email)
   // Debugging: Check the email value from Redux
@@ -97,59 +106,54 @@ function OTPComponentReset() {
 
   return (
     <section className="w-full h-screen flex justify-center items-center">
-      <div className=" m-auto border-1 border border-slate-100 rounded-xl py-7">
-        <div className="px-6 sm:px-8 md:px-6 xl:px-10">
-        <div className=" flex justify-between items-center">
-             <Link href="/">
-             <Image
-                      src="/assets/logo-test.png"
-                      width={24} height={24}
-                        alt="Logo Image"
-                      />
-             </Link>
-                <div className="">
-                <button
-                    className="text-2xl text-gray-500 hover:text-gray-700"
-                    onClick={() => console.log('Close button clicked')}
-                >
-                    <IoCloseSharp />
-                </button>
-                </div>
+    <div className="m-auto border-1 border border-slate-100 rounded-xl py-7">
+      <div className="px-6 sm:px-8 md:px-6 xl:px-10">
+        <div className="flex justify-between items-center">
+          <Link href="/">
+            <Image src="/assets/logo-test.png" width={24} height={24} alt="Logo Image" />
+          </Link>
+          <button
+            className="text-2xl text-gray-500 hover:text-gray-700"
+            onClick={() => console.log('Close button clicked')}
+          >
+            <IoCloseSharp />
+          </button>
+        </div>
+        <div className="h-fit w-fit pt-9 pb-5">
+          <h1 className="text-4xl font-bold text-primary">ផ្ទៀងផ្ទាត់លេខកូដសម្ងាត់</h1>
+          <p className="pt-4 text-slate-500">
+          យើងបានផ្ញើលេខកូដ 6 ខ្ទង់ទៅកាន់អ៊ីមែលរបស់អ្នក។​ អ្នកមានពេល <span className="font-bold text-primary">{` ${timer}s`}</span> វិនាទី
+           
+          </p>
+          <div className="mt-6">
+            <OTPValidation length={6} onComplete={handleOTPComplete} />
+            <div className="text-right mt-3 ">
+           
+             <button
+                className="text-sm text-primary hover:underline font-bold"
+                onClick={handleResendCode}
+                disabled={resending}
+              >
+                {resending ? "កំពុងផ្ញើរលេខសម្ងាត់ទៅអ្នក..." : "ផ្ញើរលេខកូដសម្ងាត់ម្តងទៀត"}
+              </button>
+            </div>
           </div>
-          <div className="h-fit w-fit pt-9 pb-5">
-            <h1 className="text-4xl font-bold text-primary">Verify Code </h1>
-            <p className="pt-4 text-slate-500">We sent code for verify!</p>
-            <div className="mt-6">
-              <OTPValidation length={6} onComplete={handleOTPComplete} />
-              <div className="text-right mt-3">
-                <button
-                  className={`text-sm text-primary hover:underline ${
-                    resending ? "cursor-not-allowed opacity-50" : ""
-                  }`}
-                  onClick={handleResendCode}
-                  disabled={resending}
-                >
-                  {resending ? "Resending..." : "Resend Code"}
-                </button>
-              </div>
-            </div>
 
-            {/* Submit Button */}
-            <div className="mt-6">
-              <Button
-                type="submit"
-                text="Verify"
-                onClick={handleSubmit}
-                isLoading={isLoading}
-                className="w-full bg-primary hover:bg-primary text-white font-medium border-collapse"
-                // disabled={isSubmitting}
-              />
-            </div>
+          {/* Submit Button */}
+          <div className="mt-6">
+            <Button
+              type="submit"
+              text="ផ្ទៀងផ្ទាត់"
+              onClick={handleSubmit}
+              isLoading={isLoading}
+              className="w-full bg-primary hover:bg-primary text-white font-medium border-collapse"
+            />
           </div>
         </div>
       </div>
-      <ToastContainer />
-    </section>
+    </div>
+    <ToastContainer />
+  </section>
   );
 }
 
