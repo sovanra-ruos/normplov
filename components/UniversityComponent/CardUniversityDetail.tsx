@@ -14,7 +14,7 @@ type UniversityType = {
   province_name: string;
   popular_major: string;
   logo_url: string;
-  cover_image: string | null; 
+  cover_image: string | null;
   phone: string;
   lowest_price: number;
   highest_price: number;
@@ -23,7 +23,7 @@ type UniversityType = {
   website: string;
   description: string;
   mission: string;
-  majors:string[];
+  majors: string[];
   vision: string;
 };
 
@@ -89,6 +89,7 @@ export default function CardUniversityDetail({
   description,
   mission,
   vision,
+  map,
 }: UniversityType) {
   const [isOpen, setIsOpen] = React.useState(false);
   const courses = [
@@ -107,6 +108,10 @@ export default function CardUniversityDetail({
       duration: "សិក្សា 4 ឆ្នាំ",
     },
   ];
+
+  const mapUrl = `https://www.google.com/maps/embed/v1/place?key=YOUR_API_KEY&q=${encodeURIComponent(
+    map
+  )}&zoom=17`;
 
   return (
     <div className="min-h-screen bg-bglight">
@@ -127,11 +132,11 @@ export default function CardUniversityDetail({
           <div className="bg-white  bg-opacity-30 lg:w-auto lg:h-[290px] md:w-auto md:h-[230px] w-auto h-[200px] backdrop-blur-lg border rounded-xl lg:p-6 md:p-6 p-3 shadow-sm flex  flex-row md:flex-row items-center lg:gap-6 md:gap-6 gap-2">
             <Image
               src={`http://136.228.158.126:3300/${logo_url}`}
-              alt="ISTAD Logo"
+              alt={kh_name}
               width={200}
               height={200}
               unoptimized // This disables Next.js image optimization (optional if needed)
-              className="lg:w-60 lg:h-60 md:w-32 md:h-32 w-10 h-10 rounded-full lg:border-4 md:border-3 border border-primary"
+              className=" object-contain lg:w-60 lg:h-60 md:w-32 md:h-32 w-10 h-10  "
             />
             <div className="text-center md:text-left">
               <h1 className="lg:text-5xl md:text-2xl text-lg font-bold text-textprimary mb-3">
@@ -192,7 +197,14 @@ export default function CardUniversityDetail({
               <div className="aspect-[4/3] bg-gray-100 rounded-lg mb-4">
                 {/* Map placeholder */}
                 <div className="w-full h-full flex items-center justify-center text-gray-400">
-                  <MapPin className="w-8 h-8" />
+                  <iframe
+                    width="600"
+                    height="450"
+                    loading="lazy"
+                    allowFullScreen
+                    src={mapUrl}
+                    className="w-full h-full"
+                  ></iframe>
                 </div>
               </div>
               <div className="space-y-3 text-sm">
@@ -205,7 +217,7 @@ export default function CardUniversityDetail({
                 <div className="flex items-center gap-2 ">
                   <Globe className="lg:w-5 lg:h-5 md:w-4 md:h-4 w-5 h-5 text-gray-400 lg:text-[16px] md:text-[16px] text-[16px]" />
                   <div className="lg:text-[16px] md:text-sm text-[16px] text-primary ">
-                   {website}
+                    {website}
                   </div>
                 </div>
                 <div className="flex items-center gap-2">
@@ -252,9 +264,7 @@ export default function CardUniversityDetail({
                 អំពីសាលា
               </h2>
               <div className="space-y-2 lg:text-lg md:text-lg text-md text-gray-600">
-                <p>
-                  {description}
-                </p>
+                <p>{description}</p>
               </div>
             </CardContent>
           </Card>

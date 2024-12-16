@@ -6,6 +6,7 @@ import { GoArrowRight } from "react-icons/go";
 import { BiRightArrowAlt } from "react-icons/bi";
 import TeamProfilesHomePage from "@/components/ui/TeamProfilesHomePaage";
 import ProcessHomePage from "@/components/ui/ProcessHomePage";
+import FeedbackHomePage from "@/components/ui/FeedbackHomePage";
 
 // Define the types for the props
 interface FeatureCardProps {
@@ -193,7 +194,7 @@ export default function page() {
         <ProcessHomePage />
       </section>
       {/* Feedback Section */}
-      <section>{/* <FeedbackHomePage/> */}</section>
+      <section>{ /* <FeedbackHomePage/> */} </section>
     </div>
   );
 }

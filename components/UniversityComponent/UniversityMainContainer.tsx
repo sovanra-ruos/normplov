@@ -5,6 +5,7 @@ import React, { useState, useEffect } from "react";
 import { useAppDispatch } from "@/redux/hooks";
 import { setProvince, setSearch } from "@/redux/feature/filter/filterSlice";
 import { useGetUniversitiesQuery } from "@/redux/api";
+import SliderUniversity from "./SliderUniversity";
 
 // Define types for dropdown options
 type OptionType = {
@@ -23,13 +24,13 @@ type SchoolType = {
   type: string;
 };
 type Props = {
-    selectedUniversity: OptionType | null;
-    setSelectedUniversity: (value: OptionType | null) => void;  // dispatch function
-    selectedLocation: OptionType | null;
-    setSelectedLocation: (location: OptionType | null) => void;
-    search: string;
-    setSearch: (value: string) => void;
-  };
+  selectedUniversity: OptionType | null;
+  setSelectedUniversity: (value: OptionType | null) => void; // dispatch function
+  selectedLocation: OptionType | null;
+  setSelectedLocation: (location: OptionType | null) => void;
+  search: string;
+  setSearch: (value: string) => void;
+};
 
 export default function UniversityMainContainer({
   selectedUniversity,
@@ -39,14 +40,16 @@ export default function UniversityMainContainer({
   search,
   setSearch,
 }: Props) {
-
   const dispatch = useAppDispatch();
 
   // Dropdown options for university types (can be dynamic)
   const universityOptions: OptionType[] = [
     { value: "PUBLIC", label: "សាកលវិទ្យាល័យរដ្ឋ" },
     { value: "PRIVATE", label: "សាកលវិទ្យាល័យឯកជន" },
-    { value: "TVET", label: "កម្មវិធីបណ្តុះបណ្តាលជំនាញបច្ចេកទេស និងវិជ្ជាជីវៈ" },
+    {
+      value: "TVET",
+      label: "កម្មវិធីបណ្តុះបណ្តាលជំនាញបច្ចេកទេស និងវិជ្ជាជីវៈ",
+    },
     { value: "MAJORS_COURSES", label: "កម្មវិធីសិក្សាជំនាញខ្លីៗ" },
   ];
 
@@ -86,7 +89,6 @@ export default function UniversityMainContainer({
     page: 1,
   });
 
-
   // Handle search input change
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
@@ -104,48 +106,43 @@ export default function UniversityMainContainer({
     dispatch(setProvince(selectedOption?.value || "")); // Dispatch to Redux
   };
 
-
-
   return (
-    <div className="relative min-h-[300px] w-full">
-      <div
-        className="absolute inset-0 bg-cover bg-center w-full h-96"
-        style={{
-          backgroundImage: 'url("/assets/bg-uni.jpg")',
-        }}
-      ></div>
+    <div className="relative min-h-[200px] w-full">
+      <div className="absolute inset-0 bg-cover bg-center w-full lg:h-96 md:h-96 h-60">
+        <SliderUniversity/>
+      </div>
 
-      <div className="container relative z-10 mx-auto px-4 py-32">
-        <h1 className="text-4xl md:text-4xl lg:text-5xl bordered-text font-bold text-white text-center mb-8">
+      <div className="container relative z-10 mx-auto px-4 lg:py-32 md:py-24 py-10">
+        <h1 className="text-2xl md:text-4xl lg:text-5xl  bordered-text font-bold text-white text-center lg:mb-8 md:mb-8 mb-4">
           ស្វែងរកគ្រឹះស្ថានសិក្សាទៅកម្ពុជា
         </h1>
 
-        <div className="max-w-4xl mx-auto space-y-4">
+        <div className="lg:max-w-4xl md:max-w-2xl  mx-auto space-y-4">
           <div className="flex">
             <input
               type="text"
               placeholder="ស្វែងរកទីនេះ....."
-              className="flex-1 px-5 py-2 rounded-full border-0 focus:ring-2"
+              className="flex-1 lg:px-5 text-sm md:text-md lg:text-lg lg:py-2 md:px-5 md:py-2 px-4 py-1 h-[36px] md:h-auto lg:h-auto rounded-xl  border-1 border-gray-100 focus:border-primary"
               value={search}
               onChange={handleSearchChange}
             />
-            <div className="rounded-r-lg px-0.5 py-1 -ml-11">
+            <div className="rounded-r-lg px-0.5 lg:py-1 md:py-1 py-0.5 lg:-ml-11 md:-ml-11 -ml-9">
               <button
                 type="button"
-                className="px-2 py-4 mr-2 flex justify-center items-center bg-primary rounded-full w-9 h-9 text-white transition-colors"
+                className="px-2 py-4 mr-2 flex justify-center items-center  bg-primary rounded-full lg:w-9 lg:h-9 md:w-9 md:h-9 w-8 h-8 text-white transition-colors"
               >
                 <FaSearch />
               </button>
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:gap-4 md:gap-4 gap-3">
             <Select
               options={universityOptions}
               placeholder="សាកលវិទ្យាល័យទាំងអស់"
               value={selectedUniversity}
               onChange={handleUniversityChange}
-              className="rounded-full"
+              className="rounded-full text-sm md:text-md lg:text-base  "
               isClearable
             />
             <Select
@@ -154,7 +151,7 @@ export default function UniversityMainContainer({
               onChange={handleLocationChange}
               placeholder="រាជធានីភ្នំពេញ"
               isClearable
-              className="rounded-full"
+              className="rounded-full text-sm md:text-md lg:text-base"
             />
           </div>
         </div>

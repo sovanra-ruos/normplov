@@ -11,6 +11,8 @@ import {
   setSearch,
   setSelectedUniversity, // Ensure you have this action in your slice
 } from "@/redux/feature/filter/filterSlice";
+import UniversitySkeleton from "@/components/SkeletonLoading/UniversitySkeleton/UniversitySkeleton";
+import Image from "next/image";
 
 type OptionType = {
   value: string;
@@ -29,12 +31,10 @@ type UniversityType = {
 };
 
 export default function Page() {
-
   const dispatch = useAppDispatch();
   const { search, province_uuid, page, selectedUniversity } = useAppSelector(
     (state) => state.filter
   ); // Ensure you have selectedUniversity in Redux
-
 
   // Dropdown options for location
   const locationOptions: OptionType[] = [
@@ -69,15 +69,12 @@ export default function Page() {
     (option) => option.value === province_uuid
   );
 
-
   const { data, error, isLoading } = useGetUniversitiesQuery({
     search,
     province_uuid,
     type: selectedUniversity?.value || "", // Pass selectedUniversity for type filtering
     page,
   });
-
-
 
   const handleNextPage = () => {
     dispatch(setPage(page + 1));
@@ -86,9 +83,10 @@ export default function Page() {
     dispatch(setPage(Math.max(page - 1, 1)));
   };
 
-  
-
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading)
+    return (
+      <UniversitySkeleton/>
+    );
 
   if (error) {
     // Check if the error is an instance of FetchBaseQueryError
@@ -100,28 +98,37 @@ export default function Page() {
     return <div>Error: {error.message || "Something went wrong"}</div>;
   }
 
+  const router = useRouter();
+  const handleCardClick = (id: string) => {
+    router.push(`/university/${id}`);
+  };
+
   return (
     <div className="mb-5">
       {/* Include the UniversityMainContainer to filter/search */}
       <UniversityMainContainer
         selectedUniversity={selectedUniversity}
-        setSelectedUniversity={(value) => dispatch(setSelectedUniversity(value))}
+        setSelectedUniversity={(value) =>
+          dispatch(setSelectedUniversity(value))
+        }
         selectedLocation={selectedLocation || null} // Pass OptionType or null
-        setSelectedLocation={(location) => dispatch(setProvince(location?.value || ""))}
+        setSelectedLocation={(location) =>
+          dispatch(setProvince(location?.value || ""))
+        }
         search={search}
         setSearch={(value: string) => dispatch(setSearch(value))}
       />
 
       <section className="flex justify-center ">
-        <div className="w-[80%]">
+        <div className="lg:w-[80%] md:w-[90%] w-[94%]">
           <div>
-            <h1 className="text-2xl w-[90%] lg:w-full md:w-full md:text-4xl lg:text-4xl font-bold lg:text-start md:text-center text-center mb-2 text-textprimary">
+            <h1 className="text-2xl w-[90%] lg:w-full md:w-full md:text-4xl lg:text-4xl font-bold lg:text-start md:text-start text-start lg:mb-2 md:mb-2 mb-0  text-textprimary">
               {selectedUniversity?.label
                 ? `${selectedUniversity.label}`
                 : "សាកលវិទ្យាល័យរដ្ឋ និងឯកជន"}
             </h1>
           </div>
-          <div className=" mx-auto my-4 md:my-6 mt-20  grid w-auto auto-rows-fr grid-cols-1 lg:gap-8 md:gap-8 gap-4 sm:mt-12 lg:grid-cols-2 md:grid-cols-1">
+          <div className=" mx-auto my-4 md:my-6 lg:mt-10 md:mt-10 mt-4  grid w-auto auto-rows-fr grid-cols-1 lg:gap-8 md:gap-8 gap-3 sm:mt-12 lg:grid-cols-2 md:grid-cols-1">
             {data?.payload?.schools?.length > 0 ? (
               data.payload.schools.map(
                 (university: UniversityType, index: number) => (
@@ -132,31 +139,45 @@ export default function Page() {
                     location={university.location}
                     popular_major={university.popular_major}
                     logo_url={university.logo_url || "/assests/default.png"}
+                    onClick={() => handleCardClick(university.uuid)}
                   />
                 )
               )
             ) : (
-              <div>No universities found</div> // Show this if the universities array is empty
+              <div className="lg:w-[1350px] md:w-[700px] items-center flex justify-center text-xl  h-[600px]">
+                <div>
+                <Image 
+                src= "/assets/No data-rafiki.png"
+                alt=""
+                width={200}
+                height={200}
+                className="w-[400px] h-[400px]"
+                  />
+                  <div className="text-2xl -mt-6 mb-4 text-textprimary text-center">ការស្វែងរករបស់អ្នកមិនមាននិទ្នន័យ</div>
+                </div>
+              </div> // Show this if the universities array is empty
             )}
           </div>
-          <div className="mt-4 mb-4 flex  justify-center">
+          {/* Pagination */}
+          {data?.payload?.schools?.length > 0 && (
+          <div className="mt-10 mb-4 flex  justify-center">
             <div className="flex space-x-4">
               <button
-                className="rounded-xl mx-1  px-3 py-2 bg-gray-200 text-gray-500 font-medium  cursor-not-allowed"
+                className={`rounded-xl mx-1 px-3 py-2 bg-gray-200 font-medium cursor-${
+                  page === 1 ? "not-allowed" : "pointer bg-primary text-white"
+                } text-gray-500`}
                 disabled={page === 1} // Disable previous button when on the first page
                 onClick={handlePreviousPage}
               >
                 ថយក្រោយ
               </button>
-
-              <a
-                href="#"
-                className="mx-1 rounded-full px-3 py-2 bg-gray-200 text-gray-700  hover:bg-blue-500 hover:text-gray-200 "
-              >
+              <div className="mx-1 rounded-full px-3 py-2 bg-gray-200 text-gray-700 ">
                 {page}
-              </a>
+              </div>
               <button
-                className="mx-1 px-3 py-2 rounded-xl bg-gray-200 text-gray-700 font-medium hover:bg-blue-500 hover:text-gray-200 "
+                className={`rounded-xl mx-1 px-3 py-2 bg-gray-200 font-medium cursor-${
+                  page === data?.payload?.schools || data.payload.schools.length < 10 ? "not-allowed" : "pointer bg-primary text-white"
+                } text-gray-500`}
                 disabled={
                   !data?.payload?.schools || data.payload.schools.length < 10
                 } // Disable next button if fewer than 10 results (assuming 10 results per page)
@@ -166,6 +187,7 @@ export default function Page() {
               </button>
             </div>
           </div>
+          )}
         </div>
       </section>
     </div>

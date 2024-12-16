@@ -4,6 +4,7 @@ import "../globals.css";
 import { Inter, Suwannaphum } from "next/font/google";
 import NavbarPage from "@/components/Navbar/NavbarPage";
 import FooterPage from "@/components/Footer/FooterPage";
+import FloatingButtons from "@/components/General/FloatingButton";
 
 const suwannaphum = Suwannaphum({
   subsets: ["khmer"],
@@ -28,7 +29,7 @@ export default function PublicUserLayout({
     <html lang="en">
       <body className={`${suwannaphum.className} ${inter} antialiased`}>
         <NavbarPage />
-        <main className="w-full"> {children}</main>
+        <main className="w-full"> {children} <FloatingButtons/> </main>
         <FooterPage />
       </body>
     </html>
