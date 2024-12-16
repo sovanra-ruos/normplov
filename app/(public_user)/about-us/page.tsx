@@ -1,6 +1,8 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import CardTeam from "@/components/About-us/CardTeam";
+
 
 export default function AboutUs() {
   return (
@@ -206,6 +208,7 @@ export default function AboutUs() {
       <section className="max-w-7xl mx-auto my-4 md:my-6 flex justify-center ">
         <div className=" text-primary text-4xl font-semibold ">សមាជិកក្រុម</div>
       </section>
+      <CardTeam/>
     </div>
   );
 }
